@@ -1,16 +1,23 @@
-import { Typography, Grid } from "@mui/material";
+import { Typography, Grid, useTheme } from "@mui/material";
 
 const AboutPage = () => {
+  const theme = useTheme();
   return (
     <Grid
       container
-      width="85%"
+      width="80%"
       flexDirection="row"
       columnSpacing="35px"
       rowSpacing="35px"
     >
       <Grid item sm={12} md={3}>
-        <Typography sx={{ textDecoration: "underline" }}>what i do</Typography>
+        <Typography
+          sx={{
+            textDecoration: "underline",
+          }}
+        >
+          what i do
+        </Typography>
         <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
           I am a second-year student pursuing a Bachelor's of Science degree in
           Computer Science at Northeastern University Khoury College of Computer
@@ -30,7 +37,13 @@ const AboutPage = () => {
       </Grid>
 
       <Grid item sm={12} md={3}>
-        <Typography sx={{ textDecoration: "underline" }}>my outlook</Typography>
+        <Typography
+          sx={{
+            textDecoration: "underline",
+          }}
+        >
+          my outlook
+        </Typography>
         <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
           I'm enthralled by blending the formulaic and technological aspect of
           software with the contemporary design and care put into presenting it;
@@ -48,7 +61,11 @@ const AboutPage = () => {
       </Grid>
 
       <Grid item sm={12} md={3}>
-        <Typography sx={{ textDecoration: "underline" }}>
+        <Typography
+          sx={{
+            textDecoration: "underline",
+          }}
+        >
           technical journey
         </Typography>
         <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
@@ -64,7 +81,11 @@ const AboutPage = () => {
         </Typography>
       </Grid>
       <Grid item sm={12} md={3}>
-        <Typography sx={{ textDecoration: "underline" }}>
+        <Typography
+          sx={{
+            textDecoration: "underline",
+          }}
+        >
           going forward
         </Typography>
         <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
@@ -77,7 +98,7 @@ const AboutPage = () => {
       </Grid>
       <Grid item xs={12}>
         <a
-          style={{ color: "inherit" }}
+          style={{ color: theme.palette.secondary.main }}
           target="_blank"
           href="public\resume.pdf"
         >
