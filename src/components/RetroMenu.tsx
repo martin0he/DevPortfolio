@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 
-const menuItems = ["about me", "experience", "projects", "contact"];
+const menuItems = ["home", "about me", "experience", "projects", "contact"];
 
 const RetroMenu: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState(0);
-  const [menuVisible, setMenuVisible] = useState(true);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -28,17 +27,21 @@ const RetroMenu: React.FC = () => {
       // Simulate scrolling to corresponding sections based on selected item
       switch (selectedItem) {
         case 0:
-          scrollToSection("about");
+          scrollToSection("home");
           break;
         case 1:
-          scrollToSection("experience");
+          scrollToSection("about");
           break;
         case 2:
-          scrollToSection("projects");
+          scrollToSection("experience");
           break;
         case 3:
+          scrollToSection("projects");
+          break;
+        case 4:
           scrollToSection("contact");
           break;
+
         default:
           break;
       }
@@ -64,7 +67,7 @@ const RetroMenu: React.FC = () => {
         {menuItems.map((item, index) => (
           <Grid item key={index}>
             <Typography
-              variant="h6"
+              variant="h7"
               style={{
                 textDecoration: index === selectedItem ? "underline" : "none",
                 color: index === selectedItem ? "#d88e2c" : "white",
