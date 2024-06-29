@@ -1,8 +1,9 @@
+import React from "react";
 import { Grid, Typography, useTheme } from "@mui/material";
 import ThreeScene from "../ThreeScene";
 import Typewriter from "typewriter-effect";
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   const theme = useTheme();
   return (
     <Grid container flexDirection="row">

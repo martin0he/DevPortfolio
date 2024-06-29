@@ -3,54 +3,32 @@ import { Box, Typography, Grid } from "@mui/material";
 
 const menuItems = ["home", "about me", "experience", "projects", "contact"];
 
-const RetroMenu: React.FC = () => {
+interface RetroMenuProps {
+  setCurrentPage: (page: string) => void;
+}
+
+const RetroMenu: React.FC<RetroMenuProps> = ({ setCurrentPage }) => {
   const [selectedItem, setSelectedItem] = useState(0);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       switch (event.key) {
         case "ArrowUp":
-          setSelectedItem((prev) => Math.max(prev - 1, 0));
+          setSelectedItem((prev) => {
+            const newIndex = Math.max(prev - 1, 0);
+            setCurrentPage(menuItems[newIndex]);
+            return newIndex;
+          });
           break;
         case "ArrowDown":
-          setSelectedItem((prev) => Math.min(prev + 1, menuItems.length - 1));
-          break;
-        case "Enter":
-          handleEnter();
+          setSelectedItem((prev) => {
+            const newIndex = Math.min(prev + 1, menuItems.length - 1);
+            setCurrentPage(menuItems[newIndex]);
+            return newIndex;
+          });
           break;
         default:
           break;
-      }
-    };
-
-    const handleEnter = () => {
-      // Simulate scrolling to corresponding sections based on selected item
-      switch (selectedItem) {
-        case 0:
-          scrollToSection("home");
-          break;
-        case 1:
-          scrollToSection("about");
-          break;
-        case 2:
-          scrollToSection("experience");
-          break;
-        case 3:
-          scrollToSection("projects");
-          break;
-        case 4:
-          scrollToSection("contact");
-          break;
-
-        default:
-          break;
-      }
-    };
-
-    const scrollToSection = (sectionId: string) => {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
       }
     };
 
@@ -59,7 +37,7 @@ const RetroMenu: React.FC = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [selectedItem]); // Dependency on selectedItem to update event listener on change
+  }, [setCurrentPage]);
 
   return (
     <Box p={2} position="fixed" bottom="10px" right="10px">

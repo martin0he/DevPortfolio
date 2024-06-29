@@ -4,13 +4,13 @@ const AboutPage = () => {
   return (
     <Grid
       container
-      width="70%"
+      width="85%"
       flexDirection="row"
       columnSpacing="35px"
-      rowSpacing="15px"
+      rowSpacing="35px"
     >
-      <Grid item xs={4}>
-        <Typography>what i do</Typography>
+      <Grid item sm={12} md={3}>
+        <Typography sx={{ textDecoration: "underline" }}>what i do</Typography>
         <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
           I am a second-year student pursuing a Bachelor's of Science degree in
           Computer Science at Northeastern University Khoury College of Computer
@@ -29,18 +29,17 @@ const AboutPage = () => {
         </Typography>
       </Grid>
 
-      <Grid item xs={4}>
-        <Typography>my outlook</Typography>
+      <Grid item sm={12} md={3}>
+        <Typography sx={{ textDecoration: "underline" }}>my outlook</Typography>
         <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
           I'm enthralled by blending the formulaic and technological aspect of
           software with the contemporary design and care put into presenting it;
-          searching for balance between ingenuity and creativity. As a child,
-          technology and I were truly inseparable and I was infatuated to say
-          the least. Over the years, my passion hasn't died down but my tunnel
-          vision has been lifted and I've come to realize that the longer I stay
-          in the 'tech bubble' the more I miss out on. That's why I actively
-          broaden my horizons in fields such as literature, fine art, film,
-          cuisine, and philosophy; inherently non-technical areas so I can
+          searching for balance between ingenuity and creativity. As a child, I
+          was inseparably infatuated with technology. Over the years, my passion
+          hasn't died down but my tunnel vision has been lifted and I've come to
+          realize that the thing I love doesn't suffic alone. That's why I
+          actively broaden my horizons in fields such as literature, fine art,
+          film, cuisine, and philosophy; inherently non-technical areas so I can
           achieve balance akin to "music being the space between the notes". I
           need the 'silence' so my 'sounds' can flourish. I try to draw
           inspiration from my surroundings and my aforementioned interests to
@@ -48,15 +47,42 @@ const AboutPage = () => {
         </Typography>
       </Grid>
 
-      <Grid item xs={4}>
-        <Typography>technical journey</Typography>
+      <Grid item sm={12} md={3}>
+        <Typography sx={{ textDecoration: "underline" }}>
+          technical journey
+        </Typography>
         <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
           Contrary to my current path, hardware was actually what pushed me into
-          the rabbit whole.
+          the rabbit hole. I remember feeling like Inspector Gadget the first
+          time I held a RAM stick and looked at it with a magnifying glass as if
+          I had any clue what was going on internally. That inquisitiveness grew
+          to assembling desktops for myself and my friends and even working for
+          the IT support of a relative's business. It was during highschool that
+          I started programming and fell in love with the power at my
+          fingertips; anything in my imagination was within reach. From basic
+          Java math to scalable web development, I've let my imagination soar.
+        </Typography>
+      </Grid>
+      <Grid item sm={12} md={3}>
+        <Typography sx={{ textDecoration: "underline" }}>
+          going forward
+        </Typography>
+        <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
+          While still refining my OOP and web-dev skills, I'd like to delve into
+          the exciting field of artificial intelligence, primarily natural
+          language processing and facial recognition. My brief independent
+          research in this endeavor nicely sets me up to tackle it
+          experientally.
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography>my resume</Typography>
+        <a
+          style={{ color: "inherit" }}
+          target="_blank"
+          href="public\resume.pdf"
+        >
+          <Typography>my resume</Typography>
+        </a>
       </Grid>
     </Grid>
   );

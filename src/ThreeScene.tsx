@@ -9,7 +9,6 @@ let scene: THREE.Scene;
 let renderer: THREE.WebGLRenderer;
 let effect: AsciiEffect;
 let sphere: THREE.Mesh;
-//let cube: THREE.Mesh;
 
 const start = Date.now();
 
@@ -17,8 +16,12 @@ const ThreeScene: React.FC = () => {
   useEffect(() => {
     init();
     return () => {
-      // Cleanup logic if needed
-      renderer.dispose(); // Clean up renderer
+      // Cleanup logic
+      if (controls) controls.dispose();
+      if (renderer) renderer.dispose();
+      if (effect && effect.domElement) {
+        document.body.removeChild(effect.domElement);
+      }
     };
   }, []);
 
@@ -43,13 +46,7 @@ const ThreeScene: React.FC = () => {
       new THREE.MeshPhongMaterial({ flatShading: true })
     );
     scene.add(sphere);
-    /*
-    cube = new THREE.Mesh(
-      new THREE.BoxGeometry(110, 110, 200),
-      new THREE.MeshPhongMaterial({ flatShading: true })
-    );
-    scene.add(cube);
-*/
+
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(550, 550); // Set canvas size to 550px x 550px
     renderer.setAnimationLoop(animate);
@@ -59,7 +56,6 @@ const ThreeScene: React.FC = () => {
     effect.domElement.style.color = "white";
     effect.domElement.style.backgroundColor = "transparent";
 
-    // Append effect.domElement instead of renderer.domElement
     document.body.appendChild(effect.domElement);
 
     controls = new TrackballControls(camera, effect.domElement);
@@ -85,7 +81,7 @@ const ThreeScene: React.FC = () => {
     effect.render(scene, camera);
   };
 
-  return <></>; // No need to return anything as we directly manipulate the DOM
+  return <></>;
 };
 
 export default ThreeScene;
