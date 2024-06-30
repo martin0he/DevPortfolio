@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
           <span style={{ color: theme.palette.secondary.main }}>
             <Typewriter
               options={{
-                delay: "natural",
+                delay: 70,
                 strings: [
                   "full stack developer.",
                   "foodie.",
