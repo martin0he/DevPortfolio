@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
     <Grid container flexDirection="row">
       <Grid item xs={6}>
         <Typography fontSize={43} fontWeight={600}>
-          Hi, I'm{" "}
+          Hiya, I'm{" "}
           <span style={{ color: theme.palette.primary.main }}>Martin</span>. I'm
           a passionate{" "}
           <span style={{ color: theme.palette.secondary.main }}>
@@ -23,6 +23,7 @@ const HomePage: React.FC = () => {
                   "engineer.",
                   "cinephile.",
                   "explorer.",
+                  "spider-man fan.",
                 ],
                 autoStart: true,
                 loop: true,

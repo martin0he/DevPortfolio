@@ -1,19 +1,28 @@
-import { Box, Chip, styled, Typography } from "@mui/material";
+import {
+  Box,
+  Chip,
+  styled,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 
-const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
-  <Tooltip
-    {...props}
-    classes={{ popper: className }}
-    arrow
-    placement="right-start"
-  />
-))(() => ({
+const CustomTooltip = styled(
+  ({ className, ...props }: TooltipProps & { isMdUp: boolean }) => (
+    <Tooltip
+      {...props}
+      classes={{ popper: className }}
+      arrow
+      placement="right-start"
+    />
+  )
+)(({ isMdUp }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
     borderRadius: "15px",
     backgroundColor: "#1b1b1d",
     color: "rgba(0, 0, 0, 0.87)",
-    maxWidth: 250,
+    maxWidth: isMdUp ? 250 : 150,
     border: "4.3px solid #1b1b1d",
   },
   [`& .${tooltipClasses.arrow}`]: {
@@ -46,8 +55,11 @@ const ExpCard = ({
   description,
   technologies,
 }: ExpCardProps) => {
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <CustomTooltip
+      isMdUp={isMdUp}
       title={
         <>
           {technologies.map((tech) => (
@@ -62,7 +74,7 @@ const ExpCard = ({
       <Box
         sx={{
           backgroundColor: "#1b1b1d",
-          width: { xs: "90%", sm: "85%", md: "77%", lg: "70%" },
+          width: "95%",
           padding: "16px",
           borderRadius: "12px",
           display: "flex",
