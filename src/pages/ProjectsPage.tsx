@@ -90,7 +90,7 @@ const ProjectsPage = () => {
         <ProjectCard
           title={"theMarketplace"}
           description={
-            "University-based online marketplace to sell and buy used items on campus. Utilizes academic '.edu' email for account registration."
+            "University-based online marketplace to sell and buy used items on campus for all schools worldwide. Utilizes academic '.edu' email for account registration."
           }
           repoLink={"https://github.com/martin0he/theMarketplace"}
           websiteLink="https://www.themarketplace.dev/"
