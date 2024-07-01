@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Grid } from "@mui/material";
+import { Box, Typography, Grid, useTheme, useMediaQuery } from "@mui/material";
 
 const menuItems = ["home", "about me", "experience", "projects", "contact"];
 
@@ -39,8 +39,27 @@ const RetroMenu: React.FC<RetroMenuProps> = ({ setCurrentPage }) => {
     };
   }, [setCurrentPage]);
 
+  const theme = useTheme();
+  const atLeastMd = useMediaQuery(theme.breakpoints.up("md"));
+
   return (
-    <Box p={2} position="fixed" bottom="10px" right="10px">
+    <Box
+      p={2}
+      position="fixed"
+      bottom="10px"
+      right="10px"
+      display="flex"
+      flexDirection="row"
+      alignItems="flex-end"
+    >
+      {atLeastMd && (
+        <img
+          style={{ marginRight: "8px", marginBottom: "5px" }}
+          width="33.4px"
+          height="70px"
+          src="arrowkeys.png"
+        />
+      )}
       <Grid container direction="column" spacing={1}>
         {menuItems.map((item, index) => (
           <Grid item key={index}>

@@ -74,7 +74,7 @@ const ExpCard = ({
       <Box
         sx={{
           backgroundColor: "#1b1b1d",
-          width: { xs: "85%", sm: "90%", md: "95%" },
+          width: { xs: "85%", sm: "90%", md: "93%" },
           padding: "16px",
           borderRadius: "12px",
           display: "flex",
