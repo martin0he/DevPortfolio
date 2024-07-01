@@ -9,6 +9,7 @@ const ExperiencePage = () => {
         justifyContent: "flex-start",
         alignItems: "flex-start",
         height: "85vh",
+        margin: "15px",
       }}
     >
       <Box
