@@ -60,7 +60,9 @@ const ProjectCard = ({
 
       <Box padding="5px">
         <Typography>{title}</Typography>
-        <Typography variant="body1">{description}</Typography>
+        <Typography fontSize="20px" marginTop="12px">
+          {description}
+        </Typography>
       </Box>
 
       <Box padding="3px">
@@ -70,7 +72,7 @@ const ProjectCard = ({
       </Box>
 
       <Typography variant="body2" position="absolute" bottom="7px" right="13px">
-        {month}, {year}
+        {month} {year}
       </Typography>
       <Box
         display="flex"

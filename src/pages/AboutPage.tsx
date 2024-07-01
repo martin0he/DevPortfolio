@@ -77,11 +77,7 @@ const AboutPage = () => {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Link
-          sx={{ textDecoration: "none" }}
-          target="_blank"
-          href="public/resume.pdf"
-        >
+        <Link sx={{ textDecoration: "none" }} target="_blank" href="resume.pdf">
           <Typography
             component="span"
             color={theme.palette.secondary.main}
