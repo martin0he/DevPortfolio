@@ -18,7 +18,7 @@ const ContactPage = () => {
         justifyContent: "center",
         alignItems: "center",
         height: "85vh",
-        width: "75%",
+        width: "72%",
         padding: "15px",
       }}
     >
@@ -32,6 +32,11 @@ const ContactPage = () => {
           alignItems="center"
           justifyContent="center"
           gap={2}
+          sx={{
+            [theme.breakpoints.down("md")]: {
+              marginTop: "450px",
+            },
+          }}
         >
           <Link
             target="_blank"
