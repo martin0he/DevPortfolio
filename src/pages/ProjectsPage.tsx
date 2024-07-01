@@ -111,6 +111,7 @@ const ProjectsPage = () => {
           description={
             "Personal website to showcase who I am, my background, experience, projects and to occupy the rainy weekend I'm currently in."
           }
+          websiteLink="https://martinhema.dev"
           repoLink={"https://github.com/martin0he/devpage"}
           month={"June"}
           year={"2024"}
