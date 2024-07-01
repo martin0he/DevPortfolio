@@ -38,7 +38,7 @@ const AboutPage = () => {
           searching for balance between ingenuity and creativity. As a child, I
           was inseparably infatuated with technology. Over the years, my passion
           hasn't died down but my tunnel vision has been lifted and I've come to
-          realize that the thing I love doesn't suffic alone. That's why I
+          realize that the thing I love doesn't suffice alone. That's why I
           actively broaden my horizons in fields such as literature, fine art,
           film, cuisine, and philosophy; inherently non-technical areas so I can
           achieve balance akin to "music being the space between the notes". I
