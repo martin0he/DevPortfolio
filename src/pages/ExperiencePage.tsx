@@ -20,7 +20,7 @@ const ExperiencePage = () => {
           padding: "3px",
           backgroundColor: "transparent",
           "&::-webkit-scrollbar": {
-            width: "6px",
+            width: "5px",
           },
           "&::-webkit-scrollbar-track": {
             backgroundColor: "#afacaf",
@@ -43,13 +43,14 @@ const ExperiencePage = () => {
           title={"Founder & Co-President"}
           company={"Kappa Theta Pi Omega Colony"}
           description={
-            "Created the first professional co-ed technology fraternity at Northeastern University"
+            "Created the first professional co-ed technology fraternity at Northeastern University."
           }
           technologies={[
             "Collaboration",
             "Delegation",
             "Leadership",
             "Team-building",
+            "Time management",
           ]}
         />
         <ExpCard

@@ -5,7 +5,7 @@ const AboutPage = () => {
   return (
     <Grid
       container
-      width="80%"
+      sx={{ width: { xs: "70%", sm: "80%" } }}
       flexDirection="row"
       columnSpacing="35px"
       rowSpacing="35px"

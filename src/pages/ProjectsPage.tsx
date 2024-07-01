@@ -9,13 +9,13 @@ const ProjectsPage = () => {
         justifyContent: "flex-start",
         alignItems: "flex-start",
         height: "85vh",
-        width: "70%",
+        width: { xs: "60%", sm: "70%" },
         margin: "15px",
         marginTop: "30px",
         overflowX: "auto",
         backgroundColor: "transparent",
         "&::-webkit-scrollbar": {
-          height: "0px",
+          height: "5px",
         },
         "&::-webkit-scrollbar-track": {
           backgroundColor: "#afacaf",
@@ -116,7 +116,7 @@ const ProjectsPage = () => {
           month={"June"}
           year={"2024"}
           imgSource={"portfolioSS.png"}
-          stack={["TypeScript", "React", "MUI"]}
+          stack={["TypeScript", "React", "MUI", "EmailJS"]}
         />
       </Box>
     </Box>

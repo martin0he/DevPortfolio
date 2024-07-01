@@ -1,99 +1,158 @@
-import { Box, Typography, useTheme, Grid, Link } from "@mui/material";
+import { useState } from "react";
+import { Box, Typography, Grid, useTheme, Link } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
+import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import NewspaperIcon from "@mui/icons-material/Newspaper";
-
-const InfoComponent = () => {
-  return (
-    <Box mt="35px" p={2} width="68%">
-      <Grid container spacing={1}>
-        <Grid item sm={6}>
-          <Typography fontSize={20}>Location:</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography fontSize={20}>Boston, Massachussetts</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography fontSize={20}>Email:</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography fontSize={20}>martin.hema.mh@gmail.com</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography fontSize={20}>Education:</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography fontSize={20}>Northeastern University, Boston</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography fontSize={20}>Mobile No.:</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography fontSize={20}>(617)-735-7961</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography fontSize={20}>Languages:</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography fontSize={20}>
-            English, Albanian, Greek, French
-          </Typography>
-        </Grid>
-      </Grid>
-    </Box>
-  );
-};
-
-const BadgesComponent = () => {
-  const theme = useTheme();
-  return (
-    <Box mt="35px" width="fit-content" p={2}>
-      <Link target="_blank" href="https://www.github.com/martin0he">
-        <GitHubIcon
-          fontSize="small"
-          sx={{
-            "&:hover": { color: "#72e376" },
-            color: theme.palette.secondary.main,
-          }}
-        />
-      </Link>
-
-      <Link target="_blank" href="www.linkedin.com/in/martin-hema">
-        <LinkedInIcon
-          fontSize="small"
-          sx={{
-            "&:hover": { color: "#72cde3" },
-            color: theme.palette.primary.main,
-          }}
-        />
-      </Link>
-
-      <Link target="_blank" href="https://medium.com/@martin.hema.mh">
-        <NewspaperIcon
-          fontSize="small"
-          sx={{
-            "&:hover": { color: "#d672e3" },
-            color: "#d040e2",
-          }}
-        />
-      </Link>
-    </Box>
-  );
-};
+import EmailForm from "../components/EmailForm";
 
 const ContactPage = () => {
+  const [isPhoneHovered, setIsPhoneHovered] = useState(false);
+  const [isEmailHovered, setIsEmailHovered] = useState(false);
   const theme = useTheme();
+
   return (
-    <Box width="80%">
-      <Typography>
-        <span style={{ color: theme.palette.primary.main }}>Thank you</span> for
-        taking a minute to look through my site!{" "}
-        <span style={{ color: theme.palette.secondary.main }}>
-          Hope you enjoyed!
-        </span>
-      </Typography>
-      <InfoComponent />
-      <BadgesComponent />
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "85vh",
+        width: "75%",
+        padding: "15px",
+      }}
+    >
+      <Grid container spacing={2} maxWidth="lg">
+        <Grid
+          item
+          xs={12}
+          md={6}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          gap={2}
+        >
+          <Link
+            target="_blank"
+            href="https://github.com/martin0he"
+            sx={{
+              borderRadius: "12px",
+              backgroundColor: "#1b1b1d",
+              width: "100%",
+              height: "100px",
+              justifyContent: "center",
+              alignItems: "center",
+              display: "flex",
+              cursor: "pointer",
+              "&:hover": {
+                backgroundColor: theme.palette.secondary.main,
+                transition: "background-color 0.3s",
+              },
+            }}
+          >
+            <GitHubIcon sx={{ color: "white" }} />
+          </Link>
+
+          <Link
+            target="_blank"
+            href="https://www.linkedin.com/in/martin-hema"
+            sx={{
+              borderRadius: "12px",
+              backgroundColor: "#1b1b1d",
+              width: "100%",
+              height: "100px",
+              justifyContent: "center",
+              alignItems: "center",
+              display: "flex",
+              cursor: "pointer",
+              "&:hover": {
+                backgroundColor: theme.palette.primary.main,
+                transition: "background-color 0.3s",
+              },
+            }}
+          >
+            <LinkedInIcon sx={{ color: "white" }} />
+          </Link>
+
+          <Box
+            sx={{
+              borderRadius: "12px",
+              backgroundColor: "#1b1b1d",
+              width: "100%",
+              height: "100px",
+              justifyContent: "center",
+              alignItems: "center",
+              display: "flex",
+              position: "relative",
+              "&:hover": {
+                backgroundColor: theme.palette.grey[900],
+                transition: "background-color 0.3s",
+              },
+            }}
+            onMouseEnter={() => setIsPhoneHovered(true)}
+            onMouseLeave={() => setIsPhoneHovered(false)}
+          >
+            <PhoneEnabledIcon
+              sx={{
+                opacity: isPhoneHovered ? 0 : 1,
+                transition: "opacity 0.3s",
+              }}
+            />
+            <Typography
+              fontSize="20px"
+              sx={{
+                position: "absolute",
+                color: "white",
+                opacity: isPhoneHovered ? 1 : 0,
+                transition: "opacity 0.3s",
+              }}
+            >
+              (617)-735-7961
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              borderRadius: "12px",
+              backgroundColor: "#1b1b1d",
+              width: "100%",
+              height: "100px",
+              justifyContent: "center",
+              alignItems: "center",
+              display: "flex",
+              position: "relative",
+              "&:hover": {
+                backgroundColor: theme.palette.grey[900],
+                transition: "background-color 0.3s",
+              },
+            }}
+            onMouseEnter={() => setIsEmailHovered(true)}
+            onMouseLeave={() => setIsEmailHovered(false)}
+          >
+            <EmailIcon
+              sx={{
+                opacity: isEmailHovered ? 0 : 1,
+                transition: "opacity 0.3s",
+              }}
+            />
+            <Typography
+              fontSize="20px"
+              sx={{
+                position: "absolute",
+                color: "white",
+                opacity: isEmailHovered ? 1 : 0,
+                transition: "opacity 0.3s",
+              }}
+            >
+              martin.hema.mh@gmail.com
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <EmailForm />
+        </Grid>
+      </Grid>
     </Box>
   );
 };
