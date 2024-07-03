@@ -34,8 +34,8 @@ const AsciiRenderer = () => {
   }, [camera]);
 
   useEffect(() => {
+    camera.position.set(8, 3.2, 1);
     camera.lookAt(new THREE.Vector3(0, 22, 0));
-
     camera.updateProjectionMatrix(); // Update the camera to apply the new orientation
   }, [camera]);
 
