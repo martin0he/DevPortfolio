@@ -1,10 +1,12 @@
 import React from "react";
-import { Grid, Typography, useTheme } from "@mui/material";
+import { Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
 import ThreeScene from "../ThreeScene";
 import Typewriter from "typewriter-effect";
 
 const HomePage: React.FC = () => {
   const theme = useTheme();
+  const isLg = useMediaQuery(theme.breakpoints.up("lg"));
+
   return (
     <Grid container flexDirection="row">
       <Grid item xs={6}>
@@ -33,7 +35,7 @@ const HomePage: React.FC = () => {
         </Typography>
       </Grid>
 
-      <ThreeScene />
+      {isLg && <ThreeScene />}
     </Grid>
   );
 };
