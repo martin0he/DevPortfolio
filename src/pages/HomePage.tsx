@@ -32,9 +32,8 @@ const HomePage: React.FC = () => {
           </span>
         </Typography>
       </Grid>
-      <Grid item xs={6}>
-        <ThreeScene />
-      </Grid>
+
+      <ThreeScene />
     </Grid>
   );
 };
