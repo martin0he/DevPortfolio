@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
-import ThreeScene from "../ThreeScene";
+import ThreeScene from "../components/ThreeScene";
 import Typewriter from "typewriter-effect";
 
 const HomePage: React.FC = () => {
