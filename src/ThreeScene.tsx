@@ -1,101 +1,121 @@
-import React, { useEffect } from "react";
-import * as THREE from "three";
+import { useEffect, useRef } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { AsciiEffect } from "three/examples/jsm/effects/AsciiEffect.js";
-import { TrackballControls } from "three/examples/jsm/controls/TrackballControls.js";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import useWindowDimensions from "./useWindowDimensions";
+import { OrbitControls } from "@react-three/drei";
+import { Mesh } from "three";
+import { Model } from "./Model";
+import * as THREE from "three";
 
-let camera: THREE.PerspectiveCamera;
-let controls: TrackballControls;
-let scene: THREE.Scene;
-let renderer: THREE.WebGLRenderer;
-let effect: AsciiEffect;
-let model: THREE.Group; // Changed from sphere to model
+const InteractiveModel = () => {
+  const modelRef = useRef<Mesh>(null);
 
-const start = Date.now();
+  useFrame(() => {
+    if (modelRef.current) {
+      modelRef.current.rotation.y += 0.018;
+    }
+  });
 
-const ThreeScene: React.FC = () => {
-  const { width, height } = useWindowDimensions();
+  return (
+    <mesh ref={modelRef}>
+      <Model scale={25} position={[0, -4, 0]} />
+    </mesh>
+  );
+};
+
+const AsciiRenderer = () => {
+  const { gl, scene, camera } = useThree();
+  const effectRef = useRef<AsciiEffect | null>(null);
+
   useEffect(() => {
-    init();
-    return () => {
-      // Cleanup logic
-      if (controls) controls.dispose();
-      if (renderer) renderer.dispose();
-      if (effect && effect.domElement) {
-        document.body.removeChild(effect.domElement);
-      }
-    };
-  }, []);
+    if (camera instanceof THREE.PerspectiveCamera) {
+      // Increase the FOV
+      camera.fov = 90;
+      camera.updateProjectionMatrix();
+    }
+  }, [camera]);
 
-  const init = () => {
-    camera = new THREE.PerspectiveCamera(50, 1, 1, 1500);
-    camera.position.x = 0; // Adjust if you want to view the model from a slight angle
-    camera.position.y = 650; // Adjust to be slightly above the model to see the top of the face
-    camera.position.z = 550;
+  useEffect(() => {
+    // Assuming 'camera' is your PerspectiveCamera instance
+    // Position the camera closer to the model and halfway up its height
+    // Adjust the Y position to half of your model's estimated height
+    camera.position.set(8, 4, 0.1); // Increased Y value to elevate the camera
 
-    // Tilting the camera upwards
-    camera.rotation.x = 5;
-    camera.fov = 30; // Decrease this value to zoom in, increase to zoom out
-    camera.updateProjectionMatrix(); // Apply the change
+    // Tilt the camera upwards by making it look at a point slightly below its new height
+    // Assuming the model or point of interest is around the origin (0, 0, 0)
+    // Adjust the Y value in lookAt to control the tilt
+    camera.lookAt(new THREE.Vector3(0, 18, 0));
 
-    scene = new THREE.Scene();
-    scene.background = new THREE.Color(37, 37, 38);
+    camera.updateProjectionMatrix(); // Update the camera to apply the new orientation
+  }, [camera]);
 
-    const pointLight1 = new THREE.PointLight(0xffffff, 3, 0, 0);
-    pointLight1.position.set(500, 500, 500);
-    scene.add(pointLight1);
+  useEffect(() => {
+    // Hide the original canvas
+    gl.domElement.style.display = "none";
 
-    const pointLight2 = new THREE.PointLight(0xffffff, 1, 0, 0);
-    pointLight2.position.set(-500, -500, -500);
-    scene.add(pointLight2);
-
-    // Load GLB model
-    const loader = new GLTFLoader();
-    loader.load("myface.glb", (gltf) => {
-      model = gltf.scene;
-      // Adjust model scale and position as needed
-      model.scale.set(1000, 1000, 1000); // Example scale, adjust as needed
-      model.position.y = 0;
-      scene.add(model);
-    });
-
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize(0.45 * width, 0.67 * height);
-    renderer.setAnimationLoop(animate);
-
-    effect = new AsciiEffect(renderer, " mh.:-+*=%@#", { invert: false });
-    effect.setSize(0.45 * width, 0.67 * height);
+    // Create the ASCII effect
+    const effect = new AsciiEffect(gl, " mh.:-+*=%@#", { invert: false });
+    effect.setSize(700, 700);
     effect.domElement.style.color = "white";
     effect.domElement.style.backgroundColor = "transparent";
 
+    // Position the ASCII effect's DOM element at the bottom left corner
+    effect.domElement.style.position = "absolute";
+    effect.domElement.style.bottom = "0"; // Position at the bottom
+    effect.domElement.style.left = "0"; // Position at the left
+    effect.domElement.style.transform = "translate(0, 150px)"; // No need to translate
+    effect.domElement.style.zIndex = "10"; // Ensure it's above the canvas
+    // Append the effect's DOM element to the body
     document.body.appendChild(effect.domElement);
+    effectRef.current = effect;
 
-    controls = new TrackballControls(camera, effect.domElement);
+    // Prevent the body from scrolling
+    document.body.style.overflow = "hidden";
 
-    window.addEventListener("resize", onWindowResize);
-  };
+    return () => {
+      // Remove the effect's DOM element from the body
+      if (effectRef.current && effectRef.current.domElement) {
+        document.body.removeChild(effectRef.current.domElement);
+      }
+      // Show the original canvas
+      gl.domElement.style.display = "";
 
-  const onWindowResize = () => {
-    const aspect = window.innerWidth / window.innerHeight;
-    camera.aspect = aspect;
-    camera.updateProjectionMatrix();
-    renderer.setSize(550, 550);
-    effect.setSize(550, 550);
-  };
+      // Allow the body to scroll again
+      document.body.style.overflow = "";
+    };
+  }, [gl]);
 
-  const animate = () => {
-    const timer = Date.now() - start;
-
-    if (model) {
-      model.rotation.y = timer * 0.0003;
+  useFrame(() => {
+    if (effectRef.current) {
+      effectRef.current.render(scene, camera);
     }
+  }, 1);
 
-    controls.update();
-    effect.render(scene, camera);
-  };
-
-  return <></>;
+  return null;
 };
+
+function ThreeScene() {
+  return (
+    <Canvas
+      shadows
+      style={{
+        width: "700px",
+        height: "700px",
+        display: "block",
+        margin: "auto",
+      }}
+    >
+      <ambientLight intensity={0.9} />
+      <spotLight
+        position={[0, 10, 10]}
+        angle={0.45}
+        penumbra={0.7}
+        castShadow
+      />
+      <InteractiveModel />
+      <AsciiRenderer />
+      <OrbitControls />
+    </Canvas>
+  );
+}
 
 export default ThreeScene;

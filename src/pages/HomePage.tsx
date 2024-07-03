@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, useTheme } from "@mui/material";
+import { Box, Grid, Typography, useTheme } from "@mui/material";
 import ThreeScene from "../ThreeScene";
 import Typewriter from "typewriter-effect";
 
