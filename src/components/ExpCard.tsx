@@ -22,7 +22,7 @@ const CustomTooltip = styled(
     borderRadius: "15px",
     backgroundColor: "#1b1b1d",
     color: "rgba(0, 0, 0, 0.87)",
-    maxWidth: isMdUp ? 250 : 150,
+    maxWidth: isMdUp ? 250 : 100,
     border: "4.3px solid #1b1b1d",
   },
   [`& .${tooltipClasses.arrow}`]: {
@@ -80,9 +80,14 @@ const ExpCard = ({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          transition: "width 0.3s ease-in-out",
+
           margin: "16px",
           boxShadow: "-1px 2px 4px #000",
+          transition: "transform 0.3s, box-shadow 0.3s",
+          "&:hover": {
+            transform: "translateX(-5px)",
+            boxShadow: "-1px 5px 15px #000",
+          },
         }}
       >
         <Typography variant="h6" color="primary">

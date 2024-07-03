@@ -14,6 +14,7 @@ const RetroMenu: React.FC<RetroMenuProps> = ({ setCurrentPage }) => {
     const handleKeyDown = (event: KeyboardEvent) => {
       switch (event.key) {
         case "ArrowUp":
+          event.preventDefault(); // Prevent scrolling
           setSelectedItem((prev) => {
             const newIndex = Math.max(prev - 1, 0);
             setCurrentPage(menuItems[newIndex]);
@@ -21,6 +22,7 @@ const RetroMenu: React.FC<RetroMenuProps> = ({ setCurrentPage }) => {
           });
           break;
         case "ArrowDown":
+          event.preventDefault(); // Prevent scrolling
           setSelectedItem((prev) => {
             const newIndex = Math.min(prev + 1, menuItems.length - 1);
             setCurrentPage(menuItems[newIndex]);
