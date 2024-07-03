@@ -17,7 +17,7 @@ const InteractiveModel = () => {
 
   return (
     <mesh ref={modelRef}>
-      <Model scale={25} position={[0, -4, 0]} />
+      <Model scale={25} position={[0, -4, 3]} />
     </mesh>
   );
 };
@@ -38,12 +38,12 @@ const AsciiRenderer = () => {
     // Assuming 'camera' is your PerspectiveCamera instance
     // Position the camera closer to the model and halfway up its height
     // Adjust the Y position to half of your model's estimated height
-    camera.position.set(8, 4, 0.1); // Increased Y value to elevate the camera
+    camera.position.set(8, 3.2, 0.01); // Increased Y value to elevate the camera
 
     // Tilt the camera upwards by making it look at a point slightly below its new height
     // Assuming the model or point of interest is around the origin (0, 0, 0)
     // Adjust the Y value in lookAt to control the tilt
-    camera.lookAt(new THREE.Vector3(0, 18, 0));
+    camera.lookAt(new THREE.Vector3(0, 20, 0));
 
     camera.updateProjectionMatrix(); // Update the camera to apply the new orientation
   }, [camera]);
@@ -54,17 +54,26 @@ const AsciiRenderer = () => {
 
     // Create the ASCII effect
     const effect = new AsciiEffect(gl, " mh.:-+*=%@#", { invert: false });
-    effect.setSize(700, 700);
+    const updateEffectSizeAndPosition = () => {
+      const width = window.innerWidth * 0.5; // 50% of window width
+      const height = window.innerHeight * 0.5; // 50% of window height
+      effect.setSize(width + 85, height + 450);
+      effect.domElement.style.width = `${width}px`;
+      effect.domElement.style.height = `${height + 150}px `;
+      effect.domElement.style.position = "absolute";
+      effect.domElement.style.bottom = "0"; // Position at the bottom
+      effect.domElement.style.left = "0"; // Position at the left
+      effect.domElement.style.zIndex = "10"; // Ensure it's above the canvas
+    };
+
+    // Initial size and position update
+    updateEffectSizeAndPosition();
+
+    // Listen for window resize to update size and position
+    window.addEventListener("resize", updateEffectSizeAndPosition);
+
     effect.domElement.style.color = "white";
     effect.domElement.style.backgroundColor = "transparent";
-
-    // Position the ASCII effect's DOM element at the bottom left corner
-    effect.domElement.style.position = "absolute";
-    effect.domElement.style.bottom = "0"; // Position at the bottom
-    effect.domElement.style.left = "0"; // Position at the left
-    effect.domElement.style.transform = "translate(0, 150px)"; // No need to translate
-    effect.domElement.style.zIndex = "10"; // Ensure it's above the canvas
-    // Append the effect's DOM element to the body
     document.body.appendChild(effect.domElement);
     effectRef.current = effect;
 
@@ -72,14 +81,12 @@ const AsciiRenderer = () => {
     document.body.style.overflow = "hidden";
 
     return () => {
-      // Remove the effect's DOM element from the body
+      // Cleanup
+      window.removeEventListener("resize", updateEffectSizeAndPosition);
       if (effectRef.current && effectRef.current.domElement) {
         document.body.removeChild(effectRef.current.domElement);
       }
-      // Show the original canvas
       gl.domElement.style.display = "";
-
-      // Allow the body to scroll again
       document.body.style.overflow = "";
     };
   }, [gl]);
