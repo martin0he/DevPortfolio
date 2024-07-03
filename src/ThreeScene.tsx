@@ -28,22 +28,13 @@ const AsciiRenderer = () => {
 
   useEffect(() => {
     if (camera instanceof THREE.PerspectiveCamera) {
-      // Increase the FOV
       camera.fov = 90;
       camera.updateProjectionMatrix();
     }
   }, [camera]);
 
   useEffect(() => {
-    // Assuming 'camera' is your PerspectiveCamera instance
-    // Position the camera closer to the model and halfway up its height
-    // Adjust the Y position to half of your model's estimated height
-    camera.position.set(8, 3.2, 0.01); // Increased Y value to elevate the camera
-
-    // Tilt the camera upwards by making it look at a point slightly below its new height
-    // Assuming the model or point of interest is around the origin (0, 0, 0)
-    // Adjust the Y value in lookAt to control the tilt
-    camera.lookAt(new THREE.Vector3(0, 20, 0));
+    camera.lookAt(new THREE.Vector3(0, 22, 0));
 
     camera.updateProjectionMatrix(); // Update the camera to apply the new orientation
   }, [camera]);
@@ -105,10 +96,9 @@ function ThreeScene() {
     <Canvas
       shadows
       style={{
-        width: "700px",
-        height: "700px",
+        width: "200px",
+        height: "200px",
         display: "block",
-        margin: "auto",
       }}
     >
       <ambientLight intensity={0.9} />
@@ -118,8 +108,10 @@ function ThreeScene() {
         penumbra={0.7}
         castShadow
       />
+
       <InteractiveModel />
       <AsciiRenderer />
+
       <OrbitControls />
     </Canvas>
   );
