@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Grid, useTheme, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Grid,
+  useTheme,
+  useMediaQuery,
+  Tooltip,
+} from "@mui/material";
 
 const menuItems = ["home", "about me", "experience", "projects", "contact"];
 
@@ -55,12 +62,14 @@ const RetroMenu: React.FC<RetroMenuProps> = ({ setCurrentPage }) => {
       alignItems="flex-end"
     >
       {atLeastMd && (
-        <img
-          style={{ marginRight: "8px", marginBottom: "5px" }}
-          width="33.4px"
-          height="70px"
-          src="arrowkeys.png"
-        />
+        <Tooltip arrow title="Use arrow keys to navigate" placement="left">
+          <img
+            style={{ marginRight: "10px", marginBottom: "5px" }}
+            width="33.4px"
+            height="70px"
+            src="arrowkeys.png"
+          />
+        </Tooltip>
       )}
       <Grid container direction="column" spacing={1}>
         {menuItems.map((item, index) => (
