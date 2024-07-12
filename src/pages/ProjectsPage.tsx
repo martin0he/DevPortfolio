@@ -116,7 +116,7 @@ const ProjectsPage = () => {
           month={"June"}
           year={"2024"}
           imgSource={"portfolioSS.png"}
-          stack={["TypeScript", "React", "MUI", "EmailJS"]}
+          stack={["TypeScript", "React", "MUI", "Three.js", "Email.js"]}
         />
         <ProjectCard
           title={"CollegeRanks v2"}
