@@ -38,7 +38,7 @@ const ProjectsPage = () => {
         }}
       >
         <ProjectCard
-          title={"CollegeRanks"}
+          title={"CollegeRanks v1"}
           description={
             "Leaderboard-style global university ranking website based on a custom weighted scale and provided metrics."
           }
@@ -117,6 +117,18 @@ const ProjectsPage = () => {
           year={"2024"}
           imgSource={"portfolioSS.png"}
           stack={["TypeScript", "React", "MUI", "EmailJS"]}
+        />
+        <ProjectCard
+          title={"CollegeRanks v2"}
+          description={
+            "Ground-up rewrite of CollegeRanks with a new design, improved performance, and additional features."
+          }
+          websiteLink="https://college-ranks-v2.vercel.app"
+          repoLink={"https://github.com/martin0he/college-ranks-v2"}
+          month={"July"}
+          year={"2024"}
+          imgSource={"CRv2.png"}
+          stack={["TypeScript", "React", "MUI", "Chart.js", "Supabase"]}
         />
       </Box>
     </Box>
