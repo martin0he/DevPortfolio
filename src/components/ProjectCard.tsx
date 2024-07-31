@@ -1,4 +1,5 @@
-import { Typography, Box, Link, Chip } from "@mui/material";
+import { useState } from "react";
+import { Typography, Box, Link, Chip, CircularProgress } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
 
@@ -25,6 +26,12 @@ const ProjectCard = ({
   stack,
   isIncomplete,
 }: ProjectCardProps) => {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  const handleVideoLoad = () => {
+    setVideoLoaded(true);
+  };
+
   return (
     <Box
       sx={{
@@ -49,6 +56,7 @@ const ProjectCard = ({
         display="flex"
         height="35%"
         padding="5px"
+        position="relative"
       >
         {isIncomplete ? (
           <img
@@ -63,20 +71,25 @@ const ProjectCard = ({
             }}
           />
         ) : (
-          <video
-            autoPlay
-            loop
-            style={{
-              width: "100%",
-              height: "auto",
-              maxWidth: "100%",
-              maxHeight: "100%",
-              borderRadius: "8px",
-              objectFit: "contain",
-            }}
-          >
-            <source src={imgSource} type="video/webm" />
-          </video>
+          <>
+            {!videoLoaded && <CircularProgress color="primary" size={35} />}
+            <video
+              autoPlay
+              loop
+              onLoadedData={handleVideoLoad}
+              style={{
+                width: "100%",
+                height: "auto",
+                maxWidth: "100%",
+                maxHeight: "100%",
+                borderRadius: "8px",
+                objectFit: "contain",
+                display: videoLoaded ? "block" : "none",
+              }}
+            >
+              <source src={imgSource} type="video/webm" />
+            </video>
+          </>
         )}
       </Box>
 
@@ -89,7 +102,11 @@ const ProjectCard = ({
 
       <Box padding="3px">
         {stack.map((skill) => (
-          <Chip sx={{ fontSize: "14px", margin: "2px" }} label={skill} />
+          <Chip
+            key={skill}
+            sx={{ fontSize: "14px", margin: "2px" }}
+            label={skill}
+          />
         ))}
       </Box>
 
