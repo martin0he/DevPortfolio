@@ -61,7 +61,7 @@ const ProjectCard = ({
               borderRadius: "8px",
               objectFit: "fill",
             }}
-          ></img>
+          />
         ) : (
           <video
             autoPlay
