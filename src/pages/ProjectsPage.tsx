@@ -89,7 +89,7 @@ const ProjectsPage = () => {
           repoLink={"https://github.com/martin0he/theMarketplace"}
           websiteLink="https://www.themarketplace.dev/"
           month={"May"}
-          year={"2024 - Present"}
+          year={"2024"}
           imgSource={"mp4s/TM.mp4"}
           stack={[
             "TypeScript",
