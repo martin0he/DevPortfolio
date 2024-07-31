@@ -75,7 +75,7 @@ const ProjectCard = ({
               objectFit: "contain",
             }}
           >
-            <source src={imgSource} type="video/mp4" />
+            <source src={imgSource} type="video/webm" />
           </video>
         )}
       </Box>

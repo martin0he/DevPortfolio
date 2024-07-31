@@ -45,7 +45,7 @@ const ProjectsPage = () => {
           repoLink={"https://github.com/martin0he/AudioAnalytica"}
           month={"July"}
           year={"2024"}
-          imgSource={"mp4s/AA.mp4"}
+          imgSource={"gifs/AA.webm"}
           stack={[
             "TypeScript",
             "React",
@@ -66,7 +66,7 @@ const ProjectsPage = () => {
           repoLink={"https://github.com/martin0he/college-ranks-v2"}
           month={"July"}
           year={"2024"}
-          imgSource={"mp4s/CR2.mp4"}
+          imgSource={"gifs/CR2.webm"}
           stack={["TypeScript", "React", "MUI", "Chart.js", "Supabase"]}
         />
         <ProjectCard
@@ -78,19 +78,19 @@ const ProjectsPage = () => {
           repoLink={"https://github.com/martin0he/devpage"}
           month={"June"}
           year={"2024"}
-          imgSource={"mp4s/PORT.mp4"}
+          imgSource={"gifs/PORT.webm"}
           stack={["TypeScript", "React", "MUI", "Three.js", "Email.js"]}
         />
         <ProjectCard
           title={"theMarketplace"}
           description={
-            "University-based online marketplace to sell and buy used items on campus for all schools worldwide. Utilizes academic '.edu' email for account registration."
+            "University-based online marketplace to sell and buy used items on campus for all schools worldwide. Uses academic '.edu' email for registration."
           }
           repoLink={"https://github.com/martin0he/theMarketplace"}
           websiteLink="https://www.themarketplace.dev/"
           month={"May"}
           year={"2024"}
-          imgSource={"mp4s/TM.mp4"}
+          imgSource={"gifs/TM.webm"}
           stack={[
             "TypeScript",
             "React",
@@ -108,9 +108,10 @@ const ProjectsPage = () => {
           repoLink={
             "https://github.com/Northeastern-Electric-Racing/FinishLine"
           }
+          websiteLink={"https://finishlinebyner.com/"}
           month={"September"}
           year={"2023 - Present"}
-          imgSource={"mp4s/FL.mp4"}
+          imgSource={"gifs/FL.webm"}
           stack={[
             "React",
             "TypeScript",
@@ -148,7 +149,7 @@ const ProjectsPage = () => {
           repoLink={"https://github.com/martin0he/CollegeRanks"}
           month={"December"}
           year={"2023"}
-          imgSource={"mp4s/CR1.mp4"}
+          imgSource={"gifs/CR1.webm"}
           stack={["TypeScript", "React", "CSS", "NodeJS", "Express", "MongoDB"]}
         />
       </Box>
