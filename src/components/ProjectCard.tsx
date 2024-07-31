@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { Typography, Box, Link, Chip, CircularProgress } from "@mui/material";
+import {
+  Typography,
+  Box,
+  Link,
+  Chip,
+  CircularProgress,
+  useTheme,
+} from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
 
@@ -31,6 +38,7 @@ const ProjectCard = ({
   const handleVideoLoad = () => {
     setVideoLoaded(true);
   };
+  const theme = useTheme();
 
   return (
     <Box
@@ -129,7 +137,10 @@ const ProjectCard = ({
         >
           <GitHubIcon
             color="secondary"
-            sx={{ "&:hover": { color: "#328633" }, fontSize: "30px" }}
+            sx={{
+              "&:hover": { color: theme.palette.secondary.dark },
+              fontSize: "30px",
+            }}
           />
         </Link>
         {websiteLink && (
@@ -141,7 +152,10 @@ const ProjectCard = ({
           >
             <LaunchIcon
               color="primary"
-              sx={{ "&:hover": { color: "#4261bd" }, fontSize: "30px" }}
+              sx={{
+                "&:hover": { color: theme.palette.primary.dark },
+                fontSize: "30px",
+              }}
             />
           </Link>
         )}

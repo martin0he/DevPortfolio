@@ -1,11 +1,14 @@
 import React from "react";
-import { Typography, useTheme, useMediaQuery, Box } from "@mui/material";
+import { Typography, useTheme, useMediaQuery, Box, Link } from "@mui/material";
 import ThreeScene from "../components/ThreeScene";
 import Typewriter from "typewriter-effect";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const HomePage: React.FC = () => {
   const theme = useTheme();
   const isLg = useMediaQuery(theme.breakpoints.up("lg"));
+  const isMd = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Box display="flex" flexDirection="column">
@@ -34,6 +37,30 @@ const HomePage: React.FC = () => {
       </Typography>
 
       {isLg && <ThreeScene />}
+      <Box
+        position="absolute"
+        top={isMd ? "auto" : "25px"}
+        bottom={isMd ? "10px" : "auto"}
+        left={isMd ? "35px" : "auto"}
+        right={isMd ? "auto" : "25px"}
+        display="flex"
+        flexDirection="column"
+        columnGap="10px"
+      >
+        <Link target="_blank" href="https://github.com/martin0he">
+          <GitHubIcon
+            color="secondary"
+            sx={{ "&:hover": { color: theme.palette.secondary.dark } }}
+          />
+        </Link>
+
+        <Link target="_blank" href="https://www.linkedin.com/in/martin-hema">
+          <LinkedInIcon
+            color="primary"
+            sx={{ "&:hover": { color: theme.palette.primary.dark } }}
+          />
+        </Link>
+      </Box>
     </Box>
   );
 };
