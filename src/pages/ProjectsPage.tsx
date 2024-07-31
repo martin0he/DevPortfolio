@@ -38,32 +38,66 @@ const ProjectsPage = () => {
         }}
       >
         <ProjectCard
-          title={"CollegeRanks v1"}
+          title={"AudioAnalytica"}
           description={
-            "Leaderboard-style global university ranking website based on a custom weighted scale and provided metrics."
+            "Spotify statistics & neural net analysis website for your top tracks, artists, genres, and audio features."
           }
-          websiteLink={"https://collegeranks.onrender.com/"}
-          repoLink={"https://github.com/martin0he/CollegeRanks"}
-          month={"December"}
-          year={"2023"}
-          imgSource={"CollegeRanksSS.png"}
-          stack={["TypeScript", "React", "CSS", "NodeJS", "Express", "MongoDB"]}
-        />
-        <ProjectCard
-          title={"RetroRoutes"}
-          description={
-            "Cross-platform mobile app to locate and review thrift/consignment/second-hand stores in your local area."
-          }
-          repoLink={"https://github.com/martin0he/RetroRoutes"}
-          month={"February"}
+          repoLink={"https://github.com/martin0he/AudioAnalytica"}
+          month={"July"}
           year={"2024"}
-          imgSource={"portfolioSS.png"}
+          imgSource={"mp4s/AA.mp4"}
           stack={[
             "TypeScript",
-            "React Native",
-            "expo",
+            "React",
+            "MUI",
+            "NodeJS",
+            "Express",
+            "Spotify Web API",
+            "Python",
+            "TensorFlow",
+          ]}
+        />
+        <ProjectCard
+          title={"CollegeRanks v2"}
+          description={
+            "Ground-up rewrite of CollegeRanks with a new design, improved performance, and additional features."
+          }
+          websiteLink="https://college-ranks-v2.vercel.app"
+          repoLink={"https://github.com/martin0he/college-ranks-v2"}
+          month={"July"}
+          year={"2024"}
+          imgSource={"mp4s/CR2.mp4"}
+          stack={["TypeScript", "React", "MUI", "Chart.js", "Supabase"]}
+        />
+        <ProjectCard
+          title={"Portfolio Website"}
+          description={
+            "Personal website to showcase who I am, my background, experience, projects and to occupy the rainy weekend I'm currently in."
+          }
+          websiteLink="https://martinhema.dev"
+          repoLink={"https://github.com/martin0he/devpage"}
+          month={"June"}
+          year={"2024"}
+          imgSource={"mp4s/PORT.mp4"}
+          stack={["TypeScript", "React", "MUI", "Three.js", "Email.js"]}
+        />
+        <ProjectCard
+          title={"theMarketplace"}
+          description={
+            "University-based online marketplace to sell and buy used items on campus for all schools worldwide. Utilizes academic '.edu' email for account registration."
+          }
+          repoLink={"https://github.com/martin0he/theMarketplace"}
+          websiteLink="https://www.themarketplace.dev/"
+          month={"May"}
+          year={"2024 - Present"}
+          imgSource={"mp4s/TM.mp4"}
+          stack={[
+            "TypeScript",
+            "React",
+            "NodeJS",
             "Supabase",
-            "Google Maps API",
+            "Mapbox API",
+            "MUI",
           ]}
         />
         <ProjectCard
@@ -76,7 +110,7 @@ const ProjectsPage = () => {
           }
           month={"September"}
           year={"2023 - Present"}
-          imgSource={"FinishlineSS.png"}
+          imgSource={"mp4s/FL.mp4"}
           stack={[
             "React",
             "TypeScript",
@@ -88,47 +122,34 @@ const ProjectsPage = () => {
           ]}
         />
         <ProjectCard
-          title={"theMarketplace"}
+          isIncomplete
+          title={"RetroRoutes"}
           description={
-            "University-based online marketplace to sell and buy used items on campus for all schools worldwide. Utilizes academic '.edu' email for account registration."
+            "Cross-platform mobile app to locate and review thrift/consignment/second-hand stores in your local area."
           }
-          repoLink={"https://github.com/martin0he/theMarketplace"}
-          websiteLink="https://www.themarketplace.dev/"
-          month={"May"}
-          year={"2024 - Present"}
-          imgSource={"theMarketplaceSS.png"}
+          repoLink={"https://github.com/martin0he/RetroRoutes"}
+          month={"February"}
+          year={"2024"}
+          imgSource={"incomplete.png"}
           stack={[
             "TypeScript",
-            "React",
-            "NodeJS",
+            "React Native",
+            "expo",
             "Supabase",
-            "Mapbox API",
-            "MUI",
+            "Google Maps API",
           ]}
         />
         <ProjectCard
-          title={"Portfolio Website"}
+          title={"CollegeRanks v1"}
           description={
-            "Personal website to showcase who I am, my background, experience, projects and to occupy the rainy weekend I'm currently in."
+            "Leaderboard-style global university ranking website based on a custom weighted scale and provided metrics."
           }
-          websiteLink="https://martinhema.dev"
-          repoLink={"https://github.com/martin0he/devpage"}
-          month={"June"}
-          year={"2024"}
-          imgSource={"portfolioSS.png"}
-          stack={["TypeScript", "React", "MUI", "Three.js", "Email.js"]}
-        />
-        <ProjectCard
-          title={"CollegeRanks v2"}
-          description={
-            "Ground-up rewrite of CollegeRanks with a new design, improved performance, and additional features."
-          }
-          websiteLink="https://college-ranks-v2.vercel.app"
-          repoLink={"https://github.com/martin0he/college-ranks-v2"}
-          month={"July"}
-          year={"2024"}
-          imgSource={"CRv2.png"}
-          stack={["TypeScript", "React", "MUI", "Chart.js", "Supabase"]}
+          websiteLink={"https://collegeranks.onrender.com/"}
+          repoLink={"https://github.com/martin0he/CollegeRanks"}
+          month={"December"}
+          year={"2023"}
+          imgSource={"mp4s/CR1.mp4"}
+          stack={["TypeScript", "React", "CSS", "NodeJS", "Express", "MongoDB"]}
         />
       </Box>
     </Box>

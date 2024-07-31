@@ -11,6 +11,7 @@ interface ProjectCardProps {
   year: string;
   imgSource: string;
   stack: string[];
+  isIncomplete?: boolean;
 }
 
 const ProjectCard = ({
@@ -22,12 +23,13 @@ const ProjectCard = ({
   year,
   imgSource,
   stack,
+  isIncomplete,
 }: ProjectCardProps) => {
   return (
     <Box
       sx={{
         position: "relative",
-        width: "450px",
+        width: "380px",
         height: "100%",
         borderRadius: "12px",
         backgroundColor: "#1b1b1d",
@@ -48,15 +50,34 @@ const ProjectCard = ({
         height="35%"
         padding="5px"
       >
-        <img
-          style={{
-            width: "100%",
-            height: "100%",
-            borderRadius: "12px",
-            objectFit: "cover",
-          }}
-          src={imgSource}
-        />
+        {isIncomplete ? (
+          <img
+            src={imgSource}
+            style={{
+              width: "100%",
+              height: "auto",
+              maxWidth: "100%",
+              maxHeight: "100%",
+              borderRadius: "8px",
+              objectFit: "fill",
+            }}
+          ></img>
+        ) : (
+          <video
+            autoPlay
+            loop
+            style={{
+              width: "100%",
+              height: "auto",
+              maxWidth: "100%",
+              maxHeight: "100%",
+              borderRadius: "8px",
+              objectFit: "contain",
+            }}
+          >
+            <source src={imgSource} type="video/mp4" />
+          </video>
+        )}
       </Box>
 
       <Box padding="5px">
