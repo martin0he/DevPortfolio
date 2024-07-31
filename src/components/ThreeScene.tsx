@@ -17,7 +17,7 @@ const InteractiveModel = () => {
 
   return (
     <mesh ref={modelRef}>
-      <Model scale={25} position={[0, -4, 3]} />
+      <Model scale={25} position={[0, -5, 0]} />
     </mesh>
   );
 };
@@ -28,7 +28,7 @@ const AsciiRenderer = () => {
 
   useEffect(() => {
     if (camera instanceof THREE.PerspectiveCamera) {
-      camera.fov = 90;
+      camera.fov = 70;
       camera.updateProjectionMatrix();
     }
   }, [camera]);
@@ -108,10 +108,8 @@ function ThreeScene() {
         penumbra={0.7}
         castShadow
       />
-
       <InteractiveModel />
       <AsciiRenderer />
-
       <OrbitControls />
     </Canvas>
   );
