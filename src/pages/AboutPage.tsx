@@ -80,8 +80,11 @@ const AboutPage = () => {
         <Link sx={{ textDecoration: "none" }} target="_blank" href="resume.pdf">
           <Typography
             component="span"
-            color={theme.palette.secondary.main}
-            sx={{ "&:hover": { color: "#058a10" }, width: "fit-content" }}
+            color={theme.palette.primary.main}
+            sx={{
+              "&:hover": { color: theme.palette.primary.dark },
+              width: "fit-content",
+            }}
           >
             download resume
           </Typography>
