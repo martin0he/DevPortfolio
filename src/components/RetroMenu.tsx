@@ -71,11 +71,11 @@ const RetroMenu: React.FC<RetroMenuProps> = ({ setCurrentPage }) => {
           />
         </Tooltip>
       )}
-      <Grid container direction="column" spacing={1}>
+      <Grid container direction="column" spacing={0.6}>
         {menuItems.map((item, index) => (
           <Grid item key={index}>
             <Typography
-              textAlign="right"
+              textAlign={{ md: "right" }}
               sx={{
                 textDecoration: index === selectedItem ? "underline" : "none",
                 color: index === selectedItem ? "#d88e2c" : "white",
