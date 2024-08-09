@@ -62,7 +62,7 @@ const ProjectsPage = () => {
           description={
             "Ground-up rewrite of CollegeRanks with a new design, improved performance, and additional features."
           }
-          websiteLink="https://college-ranks-v2.vercel.app"
+          websiteLink="https://thecollegeranks.com/"
           repoLink={"https://github.com/martin0he/college-ranks-v2"}
           month={"July"}
           year={"2024"}

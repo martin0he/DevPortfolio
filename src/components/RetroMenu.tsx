@@ -64,7 +64,7 @@ const RetroMenu: React.FC<RetroMenuProps> = ({ setCurrentPage }) => {
       {atLeastMd && (
         <Tooltip arrow title="Use arrow keys to navigate" placement="left">
           <img
-            style={{ marginRight: "10px", marginBottom: "5px" }}
+            style={{ marginRight: "-20px", marginBottom: "5px" }}
             width="33.4px"
             height="70px"
             src="arrowkeys.png"
@@ -75,8 +75,8 @@ const RetroMenu: React.FC<RetroMenuProps> = ({ setCurrentPage }) => {
         {menuItems.map((item, index) => (
           <Grid item key={index}>
             <Typography
-              variant="h7"
-              style={{
+              textAlign="right"
+              sx={{
                 textDecoration: index === selectedItem ? "underline" : "none",
                 color: index === selectedItem ? "#d88e2c" : "white",
               }}
