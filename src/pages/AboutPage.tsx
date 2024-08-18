@@ -83,6 +83,7 @@ const AboutPage = () => {
             color={theme.palette.primary.main}
             sx={{
               "&:hover": { color: theme.palette.primary.dark },
+              transition: "color 0.3s",
               width: "fit-content",
             }}
           >

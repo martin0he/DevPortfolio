@@ -138,6 +138,7 @@ const ProjectCard = ({
           <GitHubIcon
             color="secondary"
             sx={{
+              transition: "color 0.2s",
               "&:hover": { color: theme.palette.secondary.dark },
               fontSize: "30px",
             }}
@@ -153,6 +154,7 @@ const ProjectCard = ({
             <LaunchIcon
               color="primary"
               sx={{
+                transition: "color 0.2s",
                 "&:hover": { color: theme.palette.primary.dark },
                 fontSize: "30px",
               }}

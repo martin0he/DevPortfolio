@@ -50,14 +50,20 @@ const HomePage: React.FC = () => {
         <Link target="_blank" href="https://github.com/martin0he">
           <GitHubIcon
             color="secondary"
-            sx={{ "&:hover": { color: theme.palette.secondary.dark } }}
+            sx={{
+              "&:hover": { color: theme.palette.secondary.dark },
+              transition: "color 0.3s",
+            }}
           />
         </Link>
 
         <Link target="_blank" href="https://www.linkedin.com/in/martin-hema">
           <LinkedInIcon
             color="primary"
-            sx={{ "&:hover": { color: theme.palette.primary.dark } }}
+            sx={{
+              "&:hover": { color: theme.palette.primary.dark },
+              transition: "color 0.3s",
+            }}
           />
         </Link>
       </Box>
