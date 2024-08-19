@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
+import VideoModal from "./VideoModal";
 
 interface ProjectCardProps {
   title: string;
@@ -34,7 +35,7 @@ const ProjectCard = ({
   isIncomplete,
 }: ProjectCardProps) => {
   const [videoLoaded, setVideoLoaded] = useState(false);
-
+  const [displayBigVideo, setDisplayBigVideo] = useState(false);
   const handleVideoLoad = () => {
     setVideoLoaded(true);
   };
@@ -51,13 +52,21 @@ const ProjectCard = ({
         margin: "16px",
         padding: "16px",
         boxShadow: "-1px 2px 4px #000",
-        transition: "transform 0.3s, box-shadow 0.3s",
+        transition: "transform 0.3s, box-shadow 0.3s ease-in-out",
         "&:hover": {
-          transform: "translateY(-10px)",
+          transform: "translateY(-7.5px)",
           boxShadow: "-1px 5px 15px #000",
         },
       }}
     >
+      <VideoModal
+        src={imgSource}
+        close={() => {
+          setDisplayBigVideo(false);
+        }}
+        isOpen={displayBigVideo}
+        title={title}
+      />
       <Box
         justifyContent="center"
         alignItems="center"
@@ -81,22 +90,35 @@ const ProjectCard = ({
         ) : (
           <>
             {!videoLoaded && <CircularProgress color="primary" size={35} />}
-            <video
-              autoPlay
-              loop
-              onLoadedData={handleVideoLoad}
-              style={{
-                width: "100%",
-                height: "auto",
-                maxWidth: "100%",
-                maxHeight: "100%",
+            <Box
+              sx={{
+                "&:hover": { transform: "scale(1.025)" },
                 borderRadius: "8px",
-                objectFit: "contain",
-                display: videoLoaded ? "block" : "none",
+                transition: "transform 0.3s ease-in-out",
               }}
             >
-              <source src={imgSource} type="video/webm" />
-            </video>
+              <video
+                onClick={() => {
+                  setDisplayBigVideo(true);
+                }}
+                autoPlay
+                loop
+                muted
+                onLoadedData={handleVideoLoad}
+                style={{
+                  cursor: "pointer",
+                  width: "100%",
+                  height: "auto",
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  borderRadius: "8px",
+                  objectFit: "contain",
+                  display: videoLoaded ? "block" : "none",
+                }}
+              >
+                <source src={imgSource} type="video/webm" />
+              </video>
+            </Box>
           </>
         )}
       </Box>

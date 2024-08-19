@@ -38,6 +38,15 @@ const ProjectsPage = () => {
         }}
       >
         <ProjectCard
+          title="Retro Chatroom"
+          description="Networking practice emulating a retro online chatroom hosted locally with mulitple clients and a server."
+          repoLink={"https://github.com/martin0he/Retro-Chatroom"}
+          month={"August"}
+          year={"2024"}
+          imgSource={"gifs/RC.webm"}
+          stack={["Java", "JavaFX", "Sockets"]}
+        />
+        <ProjectCard
           title={"AudioAnalytica"}
           description={
             "Spotify statistics & neural net analysis website for your top tracks, artists, genres, and audio features."
@@ -60,7 +69,7 @@ const ProjectsPage = () => {
         <ProjectCard
           title={"CollegeRanks v2"}
           description={
-            "Ground-up rewrite of CollegeRanks with a new design, improved performance, and additional features."
+            "Global university ranking website with a custom weighted scale, provided metrics, and user-submitted reviews."
           }
           websiteLink="https://thecollegeranks.com/"
           repoLink={"https://github.com/martin0he/college-ranks-v2"}
