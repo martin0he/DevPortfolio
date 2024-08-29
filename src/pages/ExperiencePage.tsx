@@ -23,14 +23,15 @@ const ExperiencePage = () => {
             width: "5px",
           },
           "&::-webkit-scrollbar-track": {
-            backgroundColor: "#afacaf",
+            backgroundColor: "#676468",
             borderRadius: "5px",
           },
           "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "#676468",
+            backgroundColor: "#afacaf",
             borderRadius: "5px",
+            transition: "background-color 0.3s",
             "&:hover": {
-              backgroundColor: "#423d42",
+              backgroundColor: "#8c878c",
             },
           },
         }}
