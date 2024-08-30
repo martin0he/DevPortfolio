@@ -14,7 +14,7 @@ const ExperiencePage = () => {
     >
       <Box
         sx={{
-          width: { xs: "67%", sm: "77%", md: "77%", lg: "70%" },
+          width: { lg: "87%", md: "90%", sm: "95%", xs: "100%" },
           height: "90vh",
           overflowY: "auto",
           padding: "3px",

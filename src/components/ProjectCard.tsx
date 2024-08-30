@@ -45,8 +45,8 @@ const ProjectCard = ({
     <Box
       sx={{
         position: "relative",
-        width: "380px",
-        height: "100%",
+        width: { xs: "270px", sm: "90%", md: "380px", lg: "400px" },
+        height: { md: "100%", sm: "fit-content", xs: "fit-content" },
         borderRadius: "12px",
         backgroundColor: "#1b1b1d",
         margin: "16px",
@@ -57,6 +57,8 @@ const ProjectCard = ({
           transform: "translateY(-7.5px)",
           boxShadow: "-1px 5px 15px #000",
         },
+        overflow: "hidden",
+        textOverflow: "ellipsis",
       }}
     >
       <VideoModal
@@ -130,11 +132,11 @@ const ProjectCard = ({
         </Typography>
       </Box>
 
-      <Box padding="3px">
+      <Box padding="3px" marginBottom="35px">
         {stack.map((skill) => (
           <Chip
             key={skill}
-            sx={{ fontSize: "14px", margin: "2px" }}
+            sx={{ fontSize: "15px", margin: "2px" }}
             label={skill}
           />
         ))}

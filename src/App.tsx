@@ -1,4 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { Box } from "@mui/material";
 import { isMobile } from "react-device-detect";
 import RetroMenu from "./components/RetroMenu";
@@ -10,18 +16,28 @@ import ContactPage from "./pages/ContactPage";
 import MobilePage from "./pages/MobilePage";
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState("home");
-
   return (
-    <Box padding="25px" marginLeft="20px">
-      {!isMobile && <RetroMenu setCurrentPage={setCurrentPage} />}
-      {currentPage === "home" && !isMobile && <HomePage />}
-      {currentPage === "home" && isMobile && <MobilePage />}
-      {currentPage === "about me" && <AboutPage />}
-      {currentPage === "experience" && <ExperiencePage />}
-      {currentPage === "projects" && <ProjectsPage />}
-      {currentPage === "contact" && <ContactPage />}
-    </Box>
+    <Router>
+      <Box
+        padding="25px"
+        display="flex"
+        width="calc(100vw - 180px)"
+        marginLeft="20px"
+      >
+        {!isMobile && <RetroMenu />}
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route
+            path="/home"
+            element={isMobile ? <MobilePage /> : <HomePage />}
+          />
+          <Route path="/about-me" element={<AboutPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </Box>
+    </Router>
   );
 };
 

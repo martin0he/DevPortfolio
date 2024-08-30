@@ -7,7 +7,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const HomePage: React.FC = () => {
   const theme = useTheme();
-  const isLg = useMediaQuery(theme.breakpoints.up("lg"));
   const isMd = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
@@ -19,7 +18,8 @@ const HomePage: React.FC = () => {
         <span style={{ color: theme.palette.secondary.main }}>
           <Typewriter
             options={{
-              delay: 70,
+              delay: 40,
+              deleteSpeed: 25,
               strings: [
                 "full stack developer.",
                 "foodie.",
@@ -27,7 +27,6 @@ const HomePage: React.FC = () => {
                 "engineer.",
                 "cinephile.",
                 "explorer.",
-                "spider-man fan.",
               ],
               autoStart: true,
               loop: true,
@@ -36,7 +35,7 @@ const HomePage: React.FC = () => {
         </span>
       </Typography>
 
-      {isLg && <ThreeScene />}
+      {!isMd && <ThreeScene />}
       <Box
         position="absolute"
         top={isMd ? "auto" : "25px"}

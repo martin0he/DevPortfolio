@@ -18,7 +18,7 @@ const ContactPage = () => {
         justifyContent: "center",
         alignItems: "center",
         height: "85vh",
-        width: "72%",
+        width: "100%",
         padding: "15px",
       }}
     >

@@ -5,6 +5,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Mesh } from "three";
 import { Model } from "./Model";
 import * as THREE from "three";
+import { Box } from "@mui/material";
 
 const InteractiveModel = () => {
   const modelRef = useRef<Mesh>(null);
@@ -93,25 +94,32 @@ const AsciiRenderer = () => {
 
 function ThreeScene() {
   return (
-    <Canvas
-      shadows
-      style={{
-        width: "200px",
-        height: "200px",
+    <Box
+      sx={{
+        width: { sm: "150px", md: "200px" },
+        height: { sm: "60px", md: "200px" },
         display: "block",
       }}
     >
-      <ambientLight intensity={0.9} />
-      <spotLight
-        position={[0, 10, 10]}
-        angle={0.45}
-        penumbra={0.7}
-        castShadow
-      />
-      <InteractiveModel />
-      <AsciiRenderer />
-      <OrbitControls />
-    </Canvas>
+      <Canvas
+        shadows
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <ambientLight intensity={0.9} />
+        <spotLight
+          position={[0, 10, 10]}
+          angle={0.45}
+          penumbra={0.7}
+          castShadow
+        />
+        <InteractiveModel />
+        <AsciiRenderer />
+        <OrbitControls />
+      </Canvas>
+    </Box>
   );
 }
 

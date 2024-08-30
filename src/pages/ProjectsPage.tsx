@@ -6,13 +6,13 @@ const ProjectsPage = () => {
     <Box
       sx={{
         display: "flex",
-        justifyContent: "flex-start",
+        justifyContent: { md: "flex-start", sm: "center", xs: "center" },
         alignItems: "flex-start",
-        height: "85vh",
-        width: { xs: "60%", sm: "70%" },
+        height: { md: "85vh", sm: "fit-content", xs: "fit-content" },
+        width: "100%",
         margin: "15px",
         marginTop: "30px",
-        overflowX: "auto",
+        overflow: "auto",
         backgroundColor: "transparent",
         "&::-webkit-scrollbar": {
           height: "5px",
@@ -32,10 +32,11 @@ const ProjectsPage = () => {
       }}
     >
       <Box
+        minWidth="fit-content"
         sx={{
           display: "flex",
-          flexDirection: "row",
-          height: "90%",
+          flexDirection: { xs: "column", sm: "column", md: "row", lg: "row" },
+          height: "94%",
         }}
       >
         <ProjectCard
@@ -65,6 +66,7 @@ const ProjectsPage = () => {
             "Spotify Web API",
             "Python",
             "TensorFlow",
+            "Full Stack",
           ]}
         />
         <ProjectCard

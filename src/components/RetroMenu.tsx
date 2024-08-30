@@ -1,91 +1,93 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect } from "react";
 import {
   Box,
-  Typography,
-  Grid,
-  useTheme,
-  useMediaQuery,
   Tooltip,
+  Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
+import { NavLink, useNavigate } from "react-router-dom";
 
-const menuItems = ["home", "about me", "experience", "projects", "contact"];
+const routes = ["home", "about me", "experience", "projects", "contact"];
 
-interface RetroMenuProps {
-  setCurrentPage: (page: string) => void;
-}
+const RetroMenu = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const navigate = useNavigate();
 
-const RetroMenu: React.FC<RetroMenuProps> = ({ setCurrentPage }) => {
-  const [selectedItem, setSelectedItem] = useState(0);
+  const handleKeyDown = (event: { key: string }) => {
+    if (event.key === "ArrowDown") {
+      setSelectedIndex((prevIndex) => (prevIndex + 1) % routes.length);
+    } else if (event.key === "ArrowUp") {
+      setSelectedIndex((prevIndex) =>
+        prevIndex === 0 ? routes.length - 1 : prevIndex - 1
+      );
+    }
+  };
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      switch (event.key) {
-        case "ArrowUp":
-          event.preventDefault(); // Prevent scrolling
-          setSelectedItem((prev) => {
-            const newIndex = Math.max(prev - 1, 0);
-            setCurrentPage(menuItems[newIndex]);
-            return newIndex;
-          });
-          break;
-        case "ArrowDown":
-          event.preventDefault(); // Prevent scrolling
-          setSelectedItem((prev) => {
-            const newIndex = Math.min(prev + 1, menuItems.length - 1);
-            setCurrentPage(menuItems[newIndex]);
-            return newIndex;
-          });
-          break;
-        default:
-          break;
-      }
-    };
-
     window.addEventListener("keydown", handleKeyDown);
-
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [setCurrentPage]);
+  }, []);
+
+  useEffect(() => {
+    navigate(`/${routes[selectedIndex].replace(" ", "-")}`);
+  }, [selectedIndex, navigate]);
 
   const theme = useTheme();
   const atLeastMd = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
     <Box
-      p={2}
-      position="fixed"
-      bottom="10px"
-      right="10px"
       display="flex"
       flexDirection="row"
+      position="fixed"
+      bottom="5px"
+      right="5px"
+      padding="12px"
       alignItems="flex-end"
+      zIndex="100"
     >
       {atLeastMd && (
-        <Tooltip arrow title="Use arrow keys to navigate" placement="left">
-          <img
-            style={{ marginRight: "-20px", marginBottom: "5px" }}
-            width="33.4px"
-            height="70px"
-            src="arrowkeys.png"
-          />
-        </Tooltip>
+        <Box marginRight="-30px" marginBottom="-10px">
+          <Tooltip
+            arrow
+            title="Use arrow keys to navigate too!"
+            placement="left"
+          >
+            <img
+              width="33.4px"
+              height="70px"
+              src="arrowkeys.png"
+              alt="Arrow Keys"
+            />
+          </Tooltip>
+        </Box>
       )}
-      <Grid container direction="column" spacing={0.6}>
-        {menuItems.map((item, index) => (
-          <Grid item key={index}>
-            <Typography
-              textAlign={{ md: "right" }}
-              sx={{
-                textDecoration: index === selectedItem ? "underline" : "none",
-                color: index === selectedItem ? "#d88e2c" : "white",
+      <Box
+        display="flex"
+        justifyContent={atLeastMd ? "flex-end" : "center"}
+        flexDirection="column"
+        textAlign="right"
+      >
+        {routes.map((route, index) => (
+          <Box key={route} mx={1}>
+            <NavLink
+              to={`/${route.replace(" ", "-")}`}
+              style={{
+                display: "inline-block",
+                color: selectedIndex === index ? "#d88e2c" : "white",
+                textDecoration: index === selectedIndex ? "underline" : "none",
               }}
+              onClick={() => setSelectedIndex(index)}
             >
-              {item}
-            </Typography>
-          </Grid>
+              <Typography>{route}</Typography>
+            </NavLink>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 };

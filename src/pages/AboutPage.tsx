@@ -5,14 +5,14 @@ const AboutPage = () => {
   return (
     <Grid
       container
-      sx={{ width: { xs: "70%", sm: "80%" } }}
+      width="100%"
       flexDirection="row"
       columnSpacing="35px"
       rowSpacing="35px"
     >
       <Grid item sm={12} md={3}>
         <Typography sx={{ textDecoration: "underline" }}>what i do</Typography>
-        <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
+        <Typography fontSize={15}>
           I am a second-year student pursuing a Bachelor's of Science degree in
           Computer Science at Northeastern University Khoury College of Computer
           Sciences. My academic and professional journey was always clouded with
@@ -32,7 +32,7 @@ const AboutPage = () => {
 
       <Grid item sm={12} md={3}>
         <Typography sx={{ textDecoration: "underline" }}>my outlook</Typography>
-        <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
+        <Typography fontSize={15}>
           I'm enthralled by blending the formulaic and technological aspect of
           software with the contemporary design and care put into presenting it;
           searching for balance between ingenuity and creativity. As a child, I
@@ -52,7 +52,7 @@ const AboutPage = () => {
         <Typography sx={{ textDecoration: "underline" }}>
           technical journey
         </Typography>
-        <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
+        <Typography fontSize={15}>
           Contrary to my current path, hardware was actually what pushed me into
           the rabbit hole. I remember feeling like Inspector Gadget the first
           time I held a RAM stick and looked at it with a magnifying glass as if
@@ -68,7 +68,7 @@ const AboutPage = () => {
         <Typography sx={{ textDecoration: "underline" }}>
           going forward
         </Typography>
-        <Typography fontSize={15} sx={{ wordBreak: "break-all" }}>
+        <Typography fontSize={15}>
           While still refining my OOP and web-dev skills, I'd like to delve into
           the exciting field of artificial intelligence, primarily natural
           language processing and facial recognition. My brief independent
