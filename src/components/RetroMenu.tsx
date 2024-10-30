@@ -33,7 +33,11 @@ const RetroMenu = () => {
   }, []);
 
   useEffect(() => {
-    navigate(`/${routes[selectedIndex].replace(" ", "-")}`);
+    const path =
+      routes[selectedIndex] === "home"
+        ? "/"
+        : `/${routes[selectedIndex].replace(" ", "-")}`;
+    navigate(path);
   }, [selectedIndex, navigate]);
 
   const theme = useTheme();
@@ -75,11 +79,11 @@ const RetroMenu = () => {
         {routes.map((route, index) => (
           <Box key={route} mx={1}>
             <NavLink
-              to={`/${route.replace(" ", "-")}`}
+              to={route === "home" ? "/" : `/${route.replace(" ", "-")}`}
               style={{
                 display: "inline-block",
                 color: selectedIndex === index ? "#d88e2c" : "white",
-                textDecoration: index === selectedIndex ? "underline" : "none",
+                textDecoration: selectedIndex === index ? "underline" : "none",
               }}
               onClick={() => setSelectedIndex(index)}
             >

@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Box } from "@mui/material";
 import { isMobile } from "react-device-detect";
 import RetroMenu from "./components/RetroMenu";
@@ -26,11 +21,7 @@ const App: React.FC = () => {
       >
         {!isMobile && <RetroMenu />}
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route
-            path="/home"
-            element={isMobile ? <MobilePage /> : <HomePage />}
-          />
+          <Route path="/" element={isMobile ? <MobilePage /> : <HomePage />} />
           <Route path="/about-me" element={<AboutPage />} />
           <Route path="/experience" element={<ExperiencePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
