@@ -42,7 +42,7 @@ const ExperiencePage = () => {
           startMonth={"May"}
           endMonth={""}
           title={"Founder & Co-President"}
-          company={"Kappa Theta Pi Omega Colony"}
+          company={"Kappa Theta Pi Omega Chapter"}
           description={
             "Created the first professional co-ed technology fraternity at Northeastern University."
           }
@@ -56,9 +56,21 @@ const ExperiencePage = () => {
         />
         <ExpCard
           startYear={"2024"}
-          endYear={"Present"}
+          endYear={"2024"}
+          startMonth={"November"}
+          endMonth={"December"}
+          title={"Front End Developer"}
+          company={"Khoury College of Computer Sciences"}
+          description={
+            "Worked on redesigning and implementing Khoury's new personalized learning management platform, Oddysey."
+          }
+          technologies={["NextJS", "TailwindCSS", "Figma", "UI/UX", "Strapi"]}
+        />
+        <ExpCard
+          startYear={"2024"}
+          endYear={"2024"}
           startMonth={"January"}
-          endMonth={""}
+          endMonth={"October"}
           title={"Technical Lead"}
           company={"Northeastern Electric Racing"}
           description={
