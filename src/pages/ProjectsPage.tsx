@@ -121,8 +121,8 @@ const ProjectsPage = () => {
             "https://github.com/Northeastern-Electric-Racing/FinishLine"
           }
           websiteLink={"https://finishlinebyner.com/"}
-          month={"September"}
-          year={"2023 - Present"}
+          month={"Sep"}
+          year={"2023 -  Oct 2024"}
           imgSource={"gifs/FL.webm"}
           stack={[
             "React",

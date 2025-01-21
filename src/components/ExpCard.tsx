@@ -43,6 +43,7 @@ interface ExpCardProps {
   company: string;
   description: string;
   technologies: string[];
+  imageUrl: string;
 }
 
 const ExpCard = ({
@@ -54,6 +55,7 @@ const ExpCard = ({
   company,
   description,
   technologies,
+  imageUrl,
 }: ExpCardProps) => {
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
@@ -80,7 +82,7 @@ const ExpCard = ({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-
+          position: "relative",
           margin: "16px",
           boxShadow: "-1px 2px 4px #000",
           transition: "transform 0.3s, box-shadow 0.3s",
@@ -90,6 +92,19 @@ const ExpCard = ({
           },
         }}
       >
+        <img
+          src={imageUrl}
+          style={{
+            width: "80px",
+            height: "80px",
+            contain: "cover",
+            position: isMdUp ? "absolute" : "relative",
+            top: isMdUp ? "8px" : "0",
+            right: isMdUp ? "10px" : "0",
+            borderRadius: "7px",
+            opacity: 0.76,
+          }}
+        />
         <Typography variant="h6" color="primary">
           {title}
         </Typography>

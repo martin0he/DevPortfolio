@@ -61,7 +61,7 @@ const AboutPage = () => {
           the IT support of a relative's business. It was during highschool that
           I started programming and fell in love with the power at my
           fingertips; anything in my imagination was within reach. From basic
-          Java math to scalable web development, I've let my imagination soar.
+          Java math to web development, I've let my imagination soar.
         </Typography>
       </Grid>
       <Grid item sm={12} md={3}>
@@ -69,11 +69,12 @@ const AboutPage = () => {
           going forward
         </Typography>
         <Typography fontSize={15}>
-          While still refining my OOP and web-dev skills, I'd like to delve into
-          the exciting field of artificial intelligence, primarily natural
-          language processing and facial recognition. My brief independent
-          research in this endeavor nicely sets me up to tackle it
-          experientally.
+          I want to take my web development skills to the next level, focusing
+          on a hollistic approach to the conception, design, and implementation
+          of scalable platforms that are both aesthetically pleasing and
+          functionally robust. My work is the imprint I leave on the world, so I
+          want to be sure it's pretty to look at. Thank you for reading my
+          little rant :]
         </Typography>
       </Grid>
       <Grid item xs={12}>

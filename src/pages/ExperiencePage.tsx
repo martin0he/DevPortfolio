@@ -53,6 +53,7 @@ const ExperiencePage = () => {
             "Team-building",
             "Time management",
           ]}
+          imageUrl={"./exp-images/ktp.png"}
         />
         <ExpCard
           startYear={"2024"}
@@ -62,9 +63,10 @@ const ExperiencePage = () => {
           title={"Front End Developer"}
           company={"Khoury College of Computer Sciences"}
           description={
-            "Worked on redesigning and implementing Khoury's new personalized learning management platform, Oddysey."
+            "Worked on redesigning and implementing Khoury's new personalized learning management platform, Odyssey."
           }
           technologies={["NextJS", "TailwindCSS", "Figma", "UI/UX", "Strapi"]}
+          imageUrl={"./exp-images/khoury.jpg"}
         />
         <ExpCard
           startYear={"2024"}
@@ -83,12 +85,39 @@ const ExperiencePage = () => {
             "Code Reviews",
             "Delegation",
           ]}
+          imageUrl="./exp-images/ner.png"
+        />
+        <ExpCard
+          startYear={"2024"}
+          endYear={"2024"}
+          startMonth={"January"}
+          endMonth={"April"}
+          title={"Product Designer"}
+          company={"Northeastern Electric Racing"}
+          description={
+            "Design features with engineers' and operations' input for our custom project managament dashboard."
+          }
+          technologies={["Product Lifecycle", "Design", "UI/UX", "Figma"]}
+          imageUrl="./exp-images/ner.png"
+        />
+        <ExpCard
+          startYear={"2024"}
+          endYear={"2024"}
+          startMonth={"January"}
+          endMonth={"April"}
+          title={"Peer Tutor"}
+          company={"Knack"}
+          description={
+            "Part-time peer tutor supporting fellow students in mandatory Mathematics and CS classes."
+          }
+          technologies={["Tutoring", "Exam Practice", "Communication"]}
+          imageUrl="./exp-images/knack.png"
         />
         <ExpCard
           startYear={"2023"}
-          endYear={"Present"}
+          endYear={"2023"}
           startMonth={"September"}
-          endMonth={""}
+          endMonth={"December"}
           title={"Software Developer"}
           company={"Northeastern Electric Racing"}
           description={
@@ -99,35 +128,13 @@ const ExperiencePage = () => {
             "Typescript",
             "NodeJS",
             "Prisma",
+            "Express",
             "Web-Dev",
             "Full Stack",
             "GitHub",
             "Docker",
           ]}
-        />
-        <ExpCard
-          startYear={"2024"}
-          endYear={"2024"}
-          startMonth={"January"}
-          endMonth={"June"}
-          title={"Product Designer"}
-          company={"Northeastern Electric Racing"}
-          description={
-            "Design features with engineers' input for the product lifecycle of the dashboard."
-          }
-          technologies={["Product Life Cycle", "Design", "UI/UX", "Figma"]}
-        />
-        <ExpCard
-          startYear={"2023"}
-          endYear={"Present"}
-          startMonth={"January"}
-          endMonth={""}
-          title={"Peer Tutor"}
-          company={"Knack"}
-          description={
-            "Part-time peer tutor supporting fellow students in mandatory Mathematics and CS classes."
-          }
-          technologies={["Tutoring", "Exam Practice", "Communication"]}
+          imageUrl="./exp-images/ner.png"
         />
       </Box>
     </Box>
