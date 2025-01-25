@@ -40,13 +40,27 @@ const ProjectsPage = () => {
         }}
       >
         <ProjectCard
-          title="Retro Chatroom"
-          description="Networking practice emulating a retro online chatroom hosted locally with mulitple clients and a server."
-          repoLink={"https://github.com/martin0he/Retro-Chatroom"}
-          month={"August"}
-          year={"2024"}
-          imgSource={"gifs/RC.webm"}
-          stack={["Java", "JavaFX", "Sockets"]}
+          isIncomplete
+          title={"Cookable"}
+          description={
+            "Full-stack social media platform to author, self-publish, share, and discover cookbooks and recipes."
+          }
+          repoLink={"https://github.com/martin0he/cookable"}
+          month={"December"}
+          year={"2024 - Present"}
+          imgSource={"gifs/coming-soon.jpg"}
+          stack={[
+            "TypeScript",
+            "React",
+            "MUI",
+            "Docker",
+            "PostgreSQL",
+            "NodeJS",
+            "Express",
+            "REST API",
+            "bcrypt",
+            "JWT",
+          ]}
         />
         <ProjectCard
           title={"AudioAnalytica"}
@@ -54,8 +68,9 @@ const ProjectsPage = () => {
             "Spotify statistics & neural net analysis website for your top tracks, artists, genres, and audio features."
           }
           repoLink={"https://github.com/martin0he/AudioAnalytica"}
+          websiteLink={"https://audioanalytica.net"}
           month={"July"}
-          year={"2024"}
+          year={"2024 - Present"}
           imgSource={"gifs/AA.webm"}
           stack={[
             "TypeScript",
@@ -77,7 +92,7 @@ const ProjectsPage = () => {
           websiteLink="https://thecollegeranks.com/"
           repoLink={"https://github.com/martin0he/college-ranks-v2"}
           month={"July"}
-          year={"2024"}
+          year={"2024 - Present"}
           imgSource={"gifs/CR2.webm"}
           stack={["TypeScript", "React", "MUI", "Chart.js", "Supabase"]}
         />
@@ -113,6 +128,45 @@ const ProjectsPage = () => {
           ]}
         />
         <ProjectCard
+          isIncomplete
+          title={"RetroRoutes"}
+          description={
+            "Cross-platform mobile app to locate and review thrift/consignment/second-hand stores in your local area."
+          }
+          repoLink={"https://github.com/martin0he/RetroRoutes"}
+          month={"February"}
+          year={"2024"}
+          imgSource={"incomplete.png"}
+          stack={[
+            "TypeScript",
+            "React Native",
+            "expo",
+            "Supabase",
+            "Google Maps API",
+          ]}
+        />
+        <ProjectCard
+          title="Retro Chatroom"
+          description="Networking practice emulating a retro online chatroom hosted locally with mulitple clients and a server."
+          repoLink={"https://github.com/martin0he/Retro-Chatroom"}
+          month={"January"}
+          year={"2024"}
+          imgSource={"gifs/RC.webm"}
+          stack={["Java", "JavaFX", "Sockets"]}
+        />
+        <ProjectCard
+          title={"CollegeRanks v1"}
+          description={
+            "Leaderboard-style global university ranking website based on a custom weighted scale and provided metrics."
+          }
+          websiteLink={"https://collegeranks.onrender.com/"}
+          repoLink={"https://github.com/martin0he/CollegeRanks"}
+          month={"December"}
+          year={"2023"}
+          imgSource={"gifs/CR1.webm"}
+          stack={["TypeScript", "React", "CSS", "NodeJS", "Express", "MongoDB"]}
+        />
+        <ProjectCard
           title={"Finishline"}
           description={
             "Project management dashboard website for the team at Northeastern Electric Racing developing electric cars."
@@ -133,36 +187,6 @@ const ProjectsPage = () => {
             "Docker",
             "GitHub",
           ]}
-        />
-        <ProjectCard
-          isIncomplete
-          title={"RetroRoutes"}
-          description={
-            "Cross-platform mobile app to locate and review thrift/consignment/second-hand stores in your local area."
-          }
-          repoLink={"https://github.com/martin0he/RetroRoutes"}
-          month={"February"}
-          year={"2024"}
-          imgSource={"incomplete.png"}
-          stack={[
-            "TypeScript",
-            "React Native",
-            "expo",
-            "Supabase",
-            "Google Maps API",
-          ]}
-        />
-        <ProjectCard
-          title={"CollegeRanks v1"}
-          description={
-            "Leaderboard-style global university ranking website based on a custom weighted scale and provided metrics."
-          }
-          websiteLink={"https://collegeranks.onrender.com/"}
-          repoLink={"https://github.com/martin0he/CollegeRanks"}
-          month={"December"}
-          year={"2023"}
-          imgSource={"gifs/CR1.webm"}
-          stack={["TypeScript", "React", "CSS", "NodeJS", "Express", "MongoDB"]}
         />
       </Box>
     </Box>
