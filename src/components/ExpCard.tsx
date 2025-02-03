@@ -61,6 +61,7 @@ const ExpCard = ({
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <CustomTooltip
+      key={title}
       isMdUp={isMdUp}
       title={
         <>

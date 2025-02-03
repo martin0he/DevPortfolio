@@ -48,8 +48,8 @@ const VideoModal = ({ src, isOpen, close, title }: VideoModalProps) => {
         }}
       >
         <Typography fontSize={20}>{title}</Typography>
-        <IconButton>
-          <CloseIcon sx={{ fontSize: 24 }} onClick={close} />
+        <IconButton onClick={close}>
+          <CloseIcon sx={{ fontSize: 24 }} />
         </IconButton>
       </DialogTitle>
       {!videoLoaded && (

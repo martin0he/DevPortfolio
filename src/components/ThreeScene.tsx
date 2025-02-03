@@ -5,10 +5,21 @@ import { OrbitControls } from "@react-three/drei";
 import { Mesh } from "three";
 import { Model } from "./Model";
 import * as THREE from "three";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 
 const InteractiveModel = () => {
   const modelRef = useRef<Mesh>(null);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between("sm", "md"));
+
+  const getScaleAndPosition = () => {
+    if (isSmallScreen) return { scale: 15, position: [0, -3, 0] };
+    if (isMediumScreen) return { scale: 20, position: [0, -4, 0] };
+    return { scale: 25, position: [0, -5, 0] };
+  };
+
+  const { scale, position } = getScaleAndPosition();
 
   useFrame(() => {
     if (modelRef.current) {
@@ -18,7 +29,7 @@ const InteractiveModel = () => {
 
   return (
     <mesh ref={modelRef}>
-      <Model scale={25} position={[0, -5, 0]} />
+      <Model scale={scale} position={position} />
     </mesh>
   );
 };
@@ -37,43 +48,35 @@ const AsciiRenderer = () => {
   useEffect(() => {
     camera.position.set(8, 3.2, 5);
     camera.lookAt(new THREE.Vector3(0, 22, 0));
-    camera.updateProjectionMatrix(); // Update the camera to apply the new orientation
+    camera.updateProjectionMatrix();
   }, [camera]);
 
   useEffect(() => {
-    // Hide the original canvas
     gl.domElement.style.display = "none";
 
-    // Create the ASCII effect
     const effect = new AsciiEffect(gl, " mh.:-+*=%@#", { invert: false });
     const updateEffectSizeAndPosition = () => {
-      const width = window.innerWidth * 0.5; // 50% of window width
-      const height = window.innerHeight * 0.5; // 50% of window height
-      effect.setSize(width + 85, height + 450);
-      effect.domElement.style.width = `${width}px`;
-      effect.domElement.style.height = `${height + 150}px `;
-      effect.domElement.style.position = "absolute";
-      effect.domElement.style.bottom = "0"; // Position at the bottom
-      effect.domElement.style.left = "0"; // Position at the left
-      effect.domElement.style.zIndex = "10"; // Ensure it's above the canvas
+      effect.setSize(window.innerWidth, window.innerHeight);
+      effect.domElement.style.width = `${window.innerWidth}px`;
+      effect.domElement.style.height = `${window.innerHeight}px`;
+      effect.domElement.style.marginLeft = `calc(-${
+        window.innerWidth * 0.33
+      }px)`;
+      effect.domElement.style.zIndex = "10";
     };
 
-    // Initial size and position update
     updateEffectSizeAndPosition();
 
-    // Listen for window resize to update size and position
     window.addEventListener("resize", updateEffectSizeAndPosition);
-
     effect.domElement.style.color = "white";
     effect.domElement.style.backgroundColor = "transparent";
+
     document.body.appendChild(effect.domElement);
     effectRef.current = effect;
 
-    // Prevent the body from scrolling
     document.body.style.overflow = "hidden";
 
     return () => {
-      // Cleanup
       window.removeEventListener("resize", updateEffectSizeAndPosition);
       if (effectRef.current && effectRef.current.domElement) {
         document.body.removeChild(effectRef.current.domElement);
@@ -94,13 +97,7 @@ const AsciiRenderer = () => {
 
 function ThreeScene() {
   return (
-    <Box
-      sx={{
-        width: { sm: "150px", md: "200px" },
-        height: { sm: "60px", md: "200px" },
-        display: "block",
-      }}
-    >
+    <Box>
       <Canvas
         shadows
         style={{

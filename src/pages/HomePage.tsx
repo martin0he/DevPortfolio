@@ -7,64 +7,85 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const HomePage: React.FC = () => {
   const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box display="flex" flexDirection="column">
-      <Typography fontSize={43} fontWeight={600}>
-        Hiya, I'm{" "}
-        <span style={{ color: theme.palette.primary.main }}>Martin</span>. I'm a
-        passionate{" "}
-        <span style={{ color: theme.palette.secondary.main }}>
-          <Typewriter
-            options={{
-              delay: 40,
-              deleteSpeed: 25,
-              strings: [
-                "full stack developer.",
-                "foodie.",
-                "artist.",
-                "engineer.",
-                "cinephile.",
-                "explorer.",
-              ],
-              autoStart: true,
-              loop: true,
-            }}
-          />
-        </span>
-      </Typography>
-
-      {!isMd && <ThreeScene />}
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="flex-start"
+      justifyContent="flex-start"
+      height="100%"
+      width="100%"
+    >
       <Box
-        position="absolute"
-        top={isMd ? "auto" : "25px"}
-        bottom={isMd ? "10px" : "auto"}
-        left={isMd ? "35px" : "auto"}
-        right={isMd ? "auto" : "25px"}
+        width="100%"
+        height="fit-content"
         display="flex"
-        flexDirection="column"
-        columnGap="10px"
+        justifyContent="space-between"
+        alignItems="flex-start"
+        flexDirection="row"
+        columnGap="60px"
       >
-        <Link target="_blank" href="https://github.com/martin0he">
-          <GitHubIcon
-            color="secondary"
-            sx={{
-              "&:hover": { color: theme.palette.secondary.dark },
-              transition: "color 0.3s",
-            }}
-          />
-        </Link>
+        <Typography
+          fontSize={{ lg: 50, md: 45, sm: 40, xs: 35 }}
+          fontWeight={600}
+        >
+          Hiya, I'm{" "}
+          <span style={{ color: theme.palette.primary.main }}>Martin</span>. I'm
+          a passionate{" "}
+          <span style={{ color: theme.palette.secondary.main }}>
+            <Typewriter
+              options={{
+                delay: 40,
+                deleteSpeed: 25,
+                strings: [
+                  "full stack developer.",
+                  "foodie.",
+                  "artist.",
+                  "engineer.",
+                  "cinephile.",
+                  "explorer.",
+                ],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          </span>
+        </Typography>
 
-        <Link target="_blank" href="https://www.linkedin.com/in/martin-hema">
-          <LinkedInIcon
-            color="primary"
-            sx={{
-              "&:hover": { color: theme.palette.primary.dark },
-              transition: "color 0.3s",
-            }}
-          />
-        </Link>
+        <Box display="flex" flexDirection="column" columnGap="10px">
+          <Link target="_blank" href="https://github.com/martin0he">
+            <GitHubIcon
+              color="secondary"
+              sx={{
+                "&:hover": { color: theme.palette.secondary.dark },
+                transition: "color 0.3s",
+              }}
+            />
+          </Link>
+
+          <Link target="_blank" href="https://www.linkedin.com/in/martin-hema">
+            <LinkedInIcon
+              color="primary"
+              sx={{
+                "&:hover": { color: theme.palette.primary.dark },
+                transition: "color 0.3s",
+              }}
+            />
+          </Link>
+        </Box>
+      </Box>
+
+      <Box
+        display="flex"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        height={isSmall ? "100%" : "90%"}
+        width="100%"
+        marginTop={isSmall ? "0" : "50px"}
+      >
+        <ThreeScene />
       </Box>
     </Box>
   );
