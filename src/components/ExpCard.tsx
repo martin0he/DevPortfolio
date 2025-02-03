@@ -14,22 +14,27 @@ const CustomTooltip = styled(
       {...props}
       classes={{ popper: className }}
       arrow
-      placement="right-start"
+      placement="top-end"
     />
   )
 )(({ isMdUp }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
     borderRadius: "15px",
-    backgroundColor: "#1b1b1d",
+    backgroundColor: "#0e0e11",
     color: "rgba(0, 0, 0, 0.87)",
     maxWidth: isMdUp ? 250 : 100,
-    border: "4.3px solid #1b1b1d",
+    border: "2px dashed #57575b",
+    padding: "10px",
+
+    zIndex: 5,
   },
   [`& .${tooltipClasses.arrow}`]: {
-    color: "#1b1b1d",
+    color: "#0e0e11",
+
     "&::before": {
-      backgroundColor: "#1b1b1d",
-      border: "1px solid #1b1b1d",
+      backgroundColor: "#0e0e11",
+      border: "2px solid #57575b",
+      zIndex: 6,
     },
   },
 }));
@@ -67,7 +72,12 @@ const ExpCard = ({
         <>
           {technologies.map((tech) => (
             <Chip
-              sx={{ padding: "1px", margin: "3px", fontSize: "15px" }}
+              sx={{
+                padding: "1px",
+                margin: "4px",
+                fontSize: "15px",
+                borderRadius: "9px",
+              }}
               label={tech}
             />
           ))}
@@ -84,7 +94,7 @@ const ExpCard = ({
           flexDirection: "column",
           justifyContent: "space-between",
           position: "relative",
-          margin: "16px",
+          marginY: "8px",
           boxShadow: "-1px 2px 4px #000",
           transition: "transform 0.3s, box-shadow 0.3s",
           "&:hover": {
@@ -93,25 +103,40 @@ const ExpCard = ({
           },
         }}
       >
-        <img
-          src={imageUrl}
-          style={{
-            width: "80px",
-            height: "80px",
-            contain: "cover",
-            position: isMdUp ? "absolute" : "relative",
-            top: isMdUp ? "8px" : "0",
-            right: isMdUp ? "10px" : "0",
-            borderRadius: "7px",
-            opacity: 0.76,
-          }}
-        />
-        <Typography variant="h6" color="primary">
-          {title}
-        </Typography>
-        <Typography variant="subtitle1" color="secondary">
-          {company}
-        </Typography>
+        <Box
+          display="flex"
+          flexDirection="row"
+          gap="20px"
+          justifyContent="space-between"
+        >
+          <Box display="flex" flexDirection="column">
+            <Typography variant="h6" color="primary">
+              {title}
+            </Typography>
+            <Typography
+              sx={{ marginTop: "-5px" }}
+              variant="subtitle1"
+              color="secondary"
+            >
+              {company}
+            </Typography>
+          </Box>
+
+          <img
+            src={imageUrl}
+            style={{
+              width: "80px",
+              height: "80px",
+              contain: "cover",
+              position: isMdUp ? "absolute" : "relative",
+              top: isMdUp ? "8px" : "0",
+              right: isMdUp ? "10px" : "0",
+              borderRadius: "7px",
+              opacity: 0.76,
+            }}
+          />
+        </Box>
+
         <Typography variant="body2" color="textSecondary">
           {description}
         </Typography>

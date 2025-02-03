@@ -1,39 +1,27 @@
 import { Box } from "@mui/material";
 import ExpCard from "../components/ExpCard";
+import PageHeader from "../components/PageHeader";
 
 const ExperiencePage = () => {
   return (
     <Box
-      sx={{
-        display: "flex",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-        height: "85vh",
-        margin: "15px",
-      }}
+      justifyContent={{ xs: "center", md: "flex-start" }}
+      flexDirection="column"
+      display="flex"
+      width="100%"
+      rowGap="20px"
+      alignItems="flex-start"
     >
+      <PageHeader title="Work Experience and Leadership" />
       <Box
         sx={{
-          width: { lg: "87%", md: "90%", sm: "95%", xs: "100%" },
-          height: "90vh",
+          width: "100%",
+          height: "90%",
           overflowY: "auto",
-          padding: "3px",
-          backgroundColor: "transparent",
-          "&::-webkit-scrollbar": {
-            width: "5px",
-          },
-          "&::-webkit-scrollbar-track": {
-            backgroundColor: "#676468",
-            borderRadius: "5px",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "#afacaf",
-            borderRadius: "5px",
-            transition: "background-color 0.3s",
-            "&:hover": {
-              backgroundColor: "#8c878c",
-            },
-          },
+          overflowX: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          paddingLeft: "13px",
         }}
       >
         <ExpCard

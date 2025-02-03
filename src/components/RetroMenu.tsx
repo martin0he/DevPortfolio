@@ -51,6 +51,8 @@ const RetroMenu = () => {
       padding="12px"
       alignItems="flex-end"
       zIndex="100"
+      borderRadius="7px"
+      backgroundColor={theme.palette.grey[900]}
     >
       {atLeastMd && (
         <Box marginRight="-30px" marginBottom="-10px">

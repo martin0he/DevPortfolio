@@ -15,6 +15,7 @@ const App: React.FC = () => {
         padding="25px"
         display="flex"
         width="100vw"
+        overflowX="hidden"
         justifyContent="center"
         flexDirection="column"
       >
