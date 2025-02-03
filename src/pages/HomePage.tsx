@@ -14,13 +14,13 @@ const HomePage: React.FC = () => {
       display="flex"
       flexDirection="column"
       alignItems="flex-start"
-      justifyContent="flex-start"
       height="100%"
+      overflow="hidden"
+      justifyContent="flex-start"
       width="100%"
     >
       <Box
         width="100%"
-        height="fit-content"
         display="flex"
         justifyContent="space-between"
         alignItems="flex-start"
@@ -81,7 +81,7 @@ const HomePage: React.FC = () => {
         display="flex"
         justifyContent="flex-start"
         alignItems="flex-start"
-        height={isSmall ? "100%" : "90%"}
+        height={isSmall ? "60%" : "90%"}
         width="100%"
         marginTop={isSmall ? "0" : "50px"}
       >

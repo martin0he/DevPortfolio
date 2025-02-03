@@ -14,7 +14,8 @@ const App: React.FC = () => {
       <Box
         padding="25px"
         display="flex"
-        width="100vw"
+        width="99vw"
+        overflowY="auto"
         overflowX="hidden"
         justifyContent="center"
         flexDirection="column"

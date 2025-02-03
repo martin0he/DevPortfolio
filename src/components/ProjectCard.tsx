@@ -11,7 +11,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
 import VideoModal from "./VideoModal";
 
-interface ProjectCardProps {
+export interface ProjectCardProps {
   title: string;
   description: string;
   websiteLink?: string;
@@ -42,151 +42,168 @@ const ProjectCard = ({
   const theme = useTheme();
 
   return (
-    <Box
-      sx={{
-        position: "relative",
-        width: { xs: "270px", sm: "90%", md: "380px", lg: "400px" },
-        height: { md: "100%", sm: "fit-content", xs: "fit-content" },
-        borderRadius: "12px",
-        backgroundColor: "#1b1b1d",
-        margin: "16px",
-        padding: "16px",
-        boxShadow: "-1px 2px 4px #000",
-        transition: "transform 0.3s, box-shadow 0.3s ease-in-out",
-        "&:hover": {
-          transform: "translateY(-7.5px)",
-          boxShadow: "-1px 5px 15px #000",
-        },
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-      }}
-    >
+    <>
+      {/* modal */}
       <VideoModal
         src={imgSource}
-        close={() => {
-          setDisplayBigVideo(false);
-        }}
+        close={() => setDisplayBigVideo(false)}
         isOpen={displayBigVideo}
         title={title}
       />
-      <Box
-        justifyContent="center"
-        alignItems="center"
-        display="flex"
-        height="35%"
-        padding="5px"
-        position="relative"
-      >
-        {isIncomplete ? (
-          <img
-            src={imgSource}
-            style={{
-              width: "100%",
-              height: "auto",
-              maxWidth: "100%",
-              maxHeight: "100%",
-              borderRadius: "8px",
-              objectFit: "fill",
-            }}
-          />
-        ) : (
-          <>
-            {!videoLoaded && <CircularProgress color="primary" size={35} />}
-            <Box
-              sx={{
-                "&:hover": { transform: "scale(1.025)" },
-                borderRadius: "8px",
-                transition: "transform 0.3s ease-in-out",
-              }}
-            >
-              <video
-                onClick={() => {
-                  setDisplayBigVideo(true);
-                }}
-                autoPlay
-                loop
-                muted
-                onLoadedData={handleVideoLoad}
-                style={{
-                  cursor: "pointer",
-                  width: "100%",
-                  height: "auto",
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  borderRadius: "8px",
-                  objectFit: "contain",
-                  display: videoLoaded ? "block" : "none",
-                }}
-              >
-                <source src={imgSource} type="video/webm" />
-              </video>
-            </Box>
-          </>
-        )}
-      </Box>
 
-      <Box padding="5px">
-        <Typography>{title}</Typography>
-        <Typography fontSize="20px" marginTop="12px">
-          {description}
-        </Typography>
-      </Box>
-
-      <Box padding="3px" marginBottom="35px">
-        {stack.map((skill) => (
-          <Chip
-            key={skill}
-            sx={{ fontSize: "15px", margin: "2px" }}
-            label={skill}
-          />
-        ))}
-      </Box>
-
-      <Typography variant="body2" position="absolute" bottom="7px" right="13px">
-        {month} {year}
-      </Typography>
       <Box
         display="flex"
-        flexDirection="row"
-        position="absolute"
-        bottom="0px"
-        left="10px"
+        flexDirection="column"
+        rowGap="25px"
+        maxHeight="fit-content"
+        height={{
+          xs: "fit-content",
+          sm: "fit-content",
+          md: "fit-content",
+          lg: "95%",
+        }}
+        borderRadius="12px"
+        marginX="10px"
+        marginY="10px"
+        width="100%"
+        sx={{
+          backgroundColor: "#1b1b1d",
+          padding: "12px",
+          boxShadow: "-1px 2px 4px #000",
+          transition: "transform 0.3s, box-shadow 0.3s ease-in-out",
+          "&:hover": {
+            transform: "translateY(-7.5px)",
+            boxShadow: "-1px 5px 15px #000",
+          },
+        }}
       >
-        <Link
-          target="_blank"
-          href={repoLink}
-          width="wrap-content"
-          height="wrap-content"
-          sx={{ marginRight: "5px" }}
+        {/* demo */}
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height="40%"
+          borderRadius="8px"
+          overflow="hidden"
+          position="relative"
+          sx={{ flexShrink: 0 }}
         >
-          <GitHubIcon
-            color="secondary"
-            sx={{
-              transition: "color 0.2s",
-              "&:hover": { color: theme.palette.secondary.dark },
-              fontSize: "30px",
-            }}
-          />
-        </Link>
-        {websiteLink && (
-          <Link
-            target="_blank"
-            href={websiteLink}
-            width="wrap-content"
-            height="wrap-content"
-          >
-            <LaunchIcon
-              color="primary"
-              sx={{
-                transition: "color 0.2s",
-                "&:hover": { color: theme.palette.primary.dark },
-                fontSize: "30px",
+          {isIncomplete ? (
+            <img
+              src={imgSource}
+              alt={`${title} preview`}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
               }}
             />
-          </Link>
-        )}
+          ) : (
+            <>
+              {!videoLoaded && <CircularProgress color="primary" size={35} />}
+              <Box
+                sx={{
+                  "&:hover": { transform: "scale(1.013)" },
+                  opacity: videoLoaded ? 1 : 0,
+                  transition: "transform 0.3s ease-in-out",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <video
+                  onClick={() => setDisplayBigVideo(true)}
+                  autoPlay
+                  loop
+                  muted
+                  onLoadedData={handleVideoLoad}
+                  style={{
+                    cursor: "pointer",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: videoLoaded ? "block" : "none",
+                  }}
+                >
+                  <source src={imgSource} type="video/webm" />
+                </video>
+              </Box>
+            </>
+          )}
+        </Box>
+
+        {/* title + desc */}
+        <Box paddingY="10px" marginBottom="10px" marginTop="-20px">
+          <Typography variant="h6" color="primary.light">
+            {title}
+          </Typography>
+          <Typography variant="body1" color="gray" marginTop="8px">
+            {description}
+          </Typography>
+        </Box>
+
+        {/* stack */}
+        <Box
+          display="flex"
+          flexWrap="wrap"
+          gap="4px"
+          paddingY="5px"
+          marginTop="50px"
+        >
+          {stack.map((skill) => (
+            <Chip
+              fontSize={{ xs: "12px", sm: "14px", md: "16px" }}
+              sx={{ borderRadius: "9px", margin: "2px" }}
+              key={skill}
+              label={skill}
+            />
+          ))}
+        </Box>
+
+        {/* links + dates */}
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
+          <Box display="flex" gap="10px">
+            <Link
+              target="_blank"
+              href={repoLink}
+              sx={{ display: "flex", alignItems: "center" }}
+            >
+              <GitHubIcon
+                color="secondary"
+                sx={{
+                  transition: "color 0.2s",
+                  "&:hover": { color: theme.palette.secondary.dark },
+                  fontSize: "28px",
+                }}
+              />
+            </Link>
+            {websiteLink && (
+              <Link
+                target="_blank"
+                href={websiteLink}
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <LaunchIcon
+                  color="primary"
+                  sx={{
+                    transition: "color 0.2s",
+                    "&:hover": { color: theme.palette.primary.dark },
+                    fontSize: "28px",
+                  }}
+                />
+              </Link>
+            )}
+          </Box>
+          <Typography variant="body2" color="gray">
+            {month} {year}
+          </Typography>
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

@@ -14,8 +14,8 @@ const ExperiencePage = () => {
     >
       <PageHeader title="Work Experience and Leadership" />
       <Box
+        width={{ lg: "90%", md: "90%", sm: "100%", xs: "100%" }}
         sx={{
-          width: "100%",
           height: "90%",
           overflowY: "auto",
           overflowX: "hidden",
