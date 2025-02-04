@@ -70,8 +70,8 @@ const AsciiRenderer = () => {
     window.addEventListener("resize", updateEffectSizeAndPosition);
     effect.domElement.style.color = "white";
     effect.domElement.style.backgroundColor = "transparent";
+    gl.domElement.parentElement?.appendChild(effect.domElement);
 
-    document.body.appendChild(effect.domElement);
     effectRef.current = effect;
 
     document.body.style.overflow = "hidden";
@@ -97,7 +97,7 @@ const AsciiRenderer = () => {
 
 function ThreeScene() {
   return (
-    <Box>
+    <Box width="100%" height="90%" overflow="hidden">
       <Canvas
         shadows
         style={{

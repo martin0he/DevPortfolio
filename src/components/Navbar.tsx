@@ -18,7 +18,11 @@ const Navbar = () => {
           <MenuIcon />
         </IconButton>
       )}
-      <Drawer anchor="right" open={menuOpen} onClose={() => setMenuOpen(false)}>
+      <Drawer
+        anchor="bottom"
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+      >
         <RetroMenu />
       </Drawer>
     </Box>

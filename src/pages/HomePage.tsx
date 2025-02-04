@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
       display="flex"
       flexDirection="column"
       alignItems="flex-start"
-      height="100%"
+      height="100vh"
       overflow="hidden"
       justifyContent="flex-start"
       width="100%"
@@ -81,9 +81,10 @@ const HomePage: React.FC = () => {
         display="flex"
         justifyContent="flex-start"
         alignItems="flex-start"
-        height={isSmall ? "60%" : "90%"}
+        height="100%"
         width="100%"
         marginTop={isSmall ? "0" : "50px"}
+        overflow="hidden"
       >
         <ThreeScene />
       </Box>
