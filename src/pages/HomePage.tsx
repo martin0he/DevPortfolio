@@ -11,13 +11,14 @@ const HomePage: React.FC = () => {
 
   return (
     <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="flex-start"
-      height="100vh"
-      overflow="hidden"
-      justifyContent="flex-start"
-      width="100%"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "93vh",
+        width: "100%",
+      }}
     >
       <Box
         width="100%"

@@ -3,10 +3,21 @@ import RetroMenu from "./RetroMenu";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ setBlur }: { setBlur: (blur: boolean) => void }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const handleMenuOpen = () => {
+    setMenuOpen(true);
+    setBlur(true);
+  };
+
+  const handleMenuClose = () => {
+    setMenuOpen(false);
+    setBlur(false);
+  };
+
   return (
     <Box
+      zIndex="100"
       width="wrap-content"
       position="fixed"
       bottom="0"
@@ -14,16 +25,17 @@ const Navbar = () => {
       padding="10px"
     >
       {!menuOpen && (
-        <IconButton onClick={() => setMenuOpen(true)}>
+        <IconButton onClick={handleMenuOpen}>
           <MenuIcon />
         </IconButton>
       )}
       <Drawer
+        sx={{ zIndex: 100, opacity: 0.9 }}
         anchor="bottom"
         open={menuOpen}
-        onClose={() => setMenuOpen(false)}
+        onClose={handleMenuClose}
       >
-        <RetroMenu />
+        <RetroMenu onClose={handleMenuClose} />
       </Drawer>
     </Box>
   );

@@ -8,6 +8,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
+import PageHeader from "./PageHeader";
 
 const EmailForm = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -54,7 +55,7 @@ const EmailForm = () => {
         onSubmit={sendEmail}
         style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
       >
-        <Typography variant="h6">Contact Me</Typography>
+        <PageHeader title="Contact Me" />
         <TextField
           label="Name"
           name="user_name"

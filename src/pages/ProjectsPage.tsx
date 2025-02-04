@@ -150,7 +150,6 @@ const ProjectsPage = () => {
       display="flex"
       width="100%"
       rowGap="20px"
-      height="fit-content"
       alignItems="flex-start"
     >
       <PageHeader title="Projects" />

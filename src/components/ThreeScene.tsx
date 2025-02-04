@@ -23,7 +23,7 @@ const InteractiveModel = () => {
 
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.018;
+      modelRef.current.rotation.y += 0.021;
     }
   });
 
@@ -46,7 +46,7 @@ const AsciiRenderer = () => {
   }, [camera]);
 
   useEffect(() => {
-    camera.position.set(8, 3.2, 5);
+    camera.position.set(8, 2.2, 2);
     camera.lookAt(new THREE.Vector3(0, 22, 0));
     camera.updateProjectionMatrix();
   }, [camera]);
@@ -57,7 +57,7 @@ const AsciiRenderer = () => {
     const effect = new AsciiEffect(gl, " mh.:-+*=%@#", { invert: false });
     const updateEffectSizeAndPosition = () => {
       effect.setSize(window.innerWidth, window.innerHeight);
-      effect.domElement.style.width = `${window.innerWidth}px`;
+      effect.domElement.style.width = `${window.innerWidth + 300}px`;
       effect.domElement.style.height = `${window.innerHeight}px`;
       effect.domElement.style.marginLeft = `calc(-${
         window.innerWidth * 0.33
@@ -97,7 +97,7 @@ const AsciiRenderer = () => {
 
 function ThreeScene() {
   return (
-    <Box width="100%" height="90%" overflow="hidden">
+    <Box width="100%" height="100%" overflow="hidden">
       <Canvas
         shadows
         style={{

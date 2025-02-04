@@ -9,8 +9,10 @@ import ContactPage from "./pages/ContactPage";
 import Navbar from "./components/Navbar";
 
 const App: React.FC = () => {
+  const [isBlurred, setIsBlurred] = React.useState(false);
   return (
     <Router>
+      <Navbar setBlur={setIsBlurred} />
       <Box
         padding="25px"
         display="flex"
@@ -19,8 +21,8 @@ const App: React.FC = () => {
         overflowX="hidden"
         justifyContent="center"
         flexDirection="column"
+        sx={{ filter: isBlurred ? "blur(5px)" : "none" }}
       >
-        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about-me" element={<AboutPage />} />

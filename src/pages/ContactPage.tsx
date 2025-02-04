@@ -17,12 +17,13 @@ const ContactPage = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "85vh",
+        height: "fit-content",
         width: "100%",
         padding: "15px",
+        marginY: "30px",
       }}
     >
-      <Grid container spacing={2} maxWidth="lg">
+      <Grid height="100%" container spacing={2} maxWidth="lg">
         <Grid
           item
           xs={12}
@@ -32,11 +33,6 @@ const ContactPage = () => {
           alignItems="center"
           justifyContent="center"
           gap={2}
-          sx={{
-            [theme.breakpoints.down("md")]: {
-              marginTop: "450px",
-            },
-          }}
         >
           <Link
             target="_blank"

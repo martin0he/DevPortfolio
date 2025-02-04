@@ -1,17 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import {
-  Box,
-  Tooltip,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { NavLink, useNavigate } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
 
 const routes = ["home", "about me", "experience", "projects", "contact"];
 
-const RetroMenu = () => {
+const RetroMenu = ({ onClose }: { onClose: () => void }) => {
   const routeUrls = routes.map((route) =>
     route === "home" ? "/" : `/${route.replace(" ", "-")}`
   );
@@ -39,64 +34,64 @@ const RetroMenu = () => {
   }, []);
 
   const theme = useTheme();
-  const atLeastMd = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
     <Box
       display="flex"
-      flexDirection="row"
-      position="fixed"
-      bottom="5px"
-      right="5px"
-      padding="12px"
-      alignItems="flex-end"
-      zIndex="100"
-      borderRadius="7px"
+      padding="30px"
+      flexDirection="column"
+      width="100%"
+      height="100vh"
+      justifyContent="flex-start"
+      alignItems="center"
+      zIndex={100}
       backgroundColor={theme.palette.grey[900]}
     >
-      {atLeastMd && (
-        <Box marginRight="-30px" marginBottom="-10px">
-          <Tooltip
-            arrow
-            title="Use arrow keys to navigate too!"
-            placement="left"
-          >
-            <img
-              width="33.4px"
-              height="70px"
-              src="arrowkeys.png"
-              alt="Arrow Keys"
-            />
-          </Tooltip>
-        </Box>
-      )}
+      <Typography fontSize={{ lg: 50, md: 42, sm: 36, xs: 30 }}>
+        Explore <span style={{ color: "#55a1df" }}>My Portfolio</span>
+      </Typography>
       <Box
+        height="100%"
+        width="100%"
         display="flex"
-        justifyContent={atLeastMd ? "flex-end" : "center"}
         flexDirection="column"
-        textAlign="right"
+        alignItems="center"
+        justifyContent="space-between"
       >
-        {routes.map((route, index) => (
-          <Box key={route} mx={1}>
-            <NavLink
-              to={route === "home" ? "/" : `/${route.replace(" ", "-")}`}
-              style={{
-                display: "inline-block",
-                color: selectedIndex === index ? "#d88e2c" : "white",
-                textDecoration: selectedIndex === index ? "underline" : "none",
-              }}
-              onClick={() => {
-                setSelectedIndex(index);
-
-                navigate(
-                  route === "home" ? "/" : `/${route.replace(" ", "-")}`
-                );
-              }}
-            >
-              <Typography>{route}</Typography>
-            </NavLink>
-          </Box>
-        ))}
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          marginTop="20px"
+        >
+          {routes.map((route, index) => (
+            <Box key={route} mx={1} marginBottom="8px">
+              <NavLink
+                to={route === "home" ? "/" : `/${route.replace(" ", "-")}`}
+                style={{
+                  display: "inline-block",
+                  color: selectedIndex === index ? "#d88e2c" : "white",
+                  textDecoration:
+                    selectedIndex === index ? "underline" : "none",
+                }}
+                onClick={() => {
+                  setSelectedIndex(index);
+                  navigate(
+                    route === "home" ? "/" : `/${route.replace(" ", "-")}`
+                  );
+                  onClose();
+                }}
+              >
+                <Typography fontSize={{ lg: 29, md: 27, sm: 25, xs: 21 }}>
+                  {route}
+                </Typography>
+              </NavLink>
+            </Box>
+          ))}
+        </Box>
+        <IconButton width="wrap-content" color="secondary" onClick={onClose}>
+          <CloseIcon width="fit-content" />
+        </IconButton>
       </Box>
     </Box>
   );
