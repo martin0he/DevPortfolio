@@ -6,7 +6,7 @@ const Cookable: ProjectCardProps = {
   title: "Cookable",
   description:
     "Full-stack social media platform to author, self-publish, share, and discover cookbooks and recipes.",
-  repoLink: "",
+  repoLink: "https://github.com/martin0he/cookable",
   month: "December",
   year: "2024 - Present",
   isIncomplete: true,
